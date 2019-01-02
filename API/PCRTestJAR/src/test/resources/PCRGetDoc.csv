@@ -1,0 +1,8 @@
+contentType,clientId,primaryFileType,secondaryFileType,secondaryFileType2,IncorrectFileType
+FRM,VERISK_001,doc,pdf,,zip
+CRC,VERISK_001,pdf,zip,cl,doc
+CLM,VERISK_001,html,,,doc
+FLV,VERISK_001,doc,pdf,,html
+PRM,VERISK_001,zip,pdf,,doc
+RUL,VERISK_001,zip,pdf,,doc
+LSC,VERISK_001,zip,pdf,,doc

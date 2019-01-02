@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.iso.underwriting.pcr</groupId>
+   <artifactId>PCRTestJar</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <name>PCRTest</name>
+   <description>This application contains the Jmeter Service Tests for PCR.</description>
+   <properties>
+      <TestCaseName>${testcase.name}</TestCaseName>
+	  <Server>${server.domain}</Server>
+   </properties>
+   <dependencies>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>3.8.1</version>
+         <scope>test</scope>
+      </dependency>
+   </dependencies>
+   
+   <profiles>
+      <profile>
+         <id>default</id>
+         <activation>
+            <activeByDefault>true</activeByDefault>
+         </activation>
+         
+         <build>
+            <plugins>
+            
+               <plugin>
+						<!-- https://github.com/Ronnie76er/jmeter-maven-plugin -->
+
+						<groupId>com.lazerycode.jmeter</groupId>
+						<artifactId>jmeter-maven-plugin</artifactId>
+						<version>2.6.0</version>
+						<executions>
+							<execution>
+								<id>jmeter-tests</id>
+								
+								<goals>
+									<goal>jmeter</goal>
+								</goals>
+							</execution>								
+							
+							<execution>
+            <id>jmeter-check-results</id>
+            <goals>
+                <goal>results</goal>
+            </goals>
+       </execution>
+						</executions>
+						
+						
+						
+						<configuration>
+						<generateReports>false</generateReports>
+						 <resultsFileFormat>jtl</resultsFileFormat>
+						<jmeterExtensions>
+                            <artifact>kg.apc:jmeter-plugins-casutg:2.4</artifact>
+							<artifact>com.codoid.products:fillo:1.17</artifact>
+							<artifact>org.json:json:20171018</artifact>
+							<artifact>kg.apc:jmeter-plugins-json:2.6</artifact>  
+                        </jmeterExtensions>
+						
+						 
+							<!-- configure which testplans to use -->
+							<testFilesIncluded>   
+                            	<jMeterTestFile>${TestCaseName}RestService.jmx</jMeterTestFile>
+							</testFilesIncluded>
+							
+							
+							
+							
+							
+							
+							<!--<ignoreResultFailures>false</ignoreResultFailures>-->
+							
+                        
+                   
+						 	<reportConfig>
+						 	    
+								<xsltFile>${basedir}/src/test/resources/jmeter-results-detail-report.xsl</xsltFile> 
+							</reportConfig>
+							 
+					
+							<!-- protocol, server and port of tested webapp -->
+							<propertiesUser>
+								<csvSource>${basedir}/src/test/resources</csvSource>
+									<Server>${server.domain}</Server>
+							
+								<!-- <Port>${port}</Port>  -->
+								
+							 <targetResults>${basedir}/target/jmeter/results</targetResults> 
+<jmeter.save.saveservice.url>true</jmeter.save.saveservice.url>							 
+						
+                        
+                 		<jmeter.save.saveservice.timestamp_format>yyyy/MM/dd HH:mm:ss</jmeter.save.saveservice.timestamp_format>
+                        <jmeter.save.saveservice.bytes>false</jmeter.save.saveservice.bytes>
+                        <jmeter.save.saveservice.label>true</jmeter.save.saveservice.label>
+                        <jmeter.save.saveservice.latency>false</jmeter.save.saveservice.latency>
+                        <jmeter.save.saveservice.response_code>true</jmeter.save.saveservice.response_code>
+                        <jmeter.save.saveservice.response_message>true</jmeter.save.saveservice.response_message>
+                        <jmeter.save.saveservice.successful>true</jmeter.save.saveservice.successful>
+                        <jmeter.save.saveservice.thread_counts>false</jmeter.save.saveservice.thread_counts>
+                        <jmeter.save.saveservice.thread_name>true</jmeter.save.saveservice.thread_name>
+                        <jmeter.save.saveservice.time>false</jmeter.save.saveservice.time>
+						<jmeter.save.saveservice.timestamp_format>yyyy/MM/dd HH:mm:ss</jmeter.save.saveservice.timestamp_format>
+						<jmeter.save.saveservice.assertion_results_failure_message>true</jmeter.save.saveservice.assertion_results_failure_message>
+						<jmeter.save.saveservice.print_field_names>true</jmeter.save.saveservice.print_field_names> 
+						
+
+						<!--<jmeter.save.saveservice.response_data>true</jmeter.save.saveservice.response_data>-->
+
+						<jmeter.save.saveservice.samplerData>true</jmeter.save.saveservice.samplerData>
+
+						<jmeter.save.saveservice.requestHeaders>true</jmeter.save.saveservice.requestHeaders>
+
+						<jmeter.save.saveservice.url>true</jmeter.save.saveservice.url>
+                    	</propertiesUser>
+     						
+							<propertiesJmeter>
+								<log_level.jmeter>DEBUG</log_level.jmeter>
+								<jmeter.save.saveservice.response_data>false</jmeter.save.saveservice.response_data>
+							</propertiesJmeter>
+							 <downloadExtensionDependencies>false</downloadExtensionDependencies>
+							 <testPlanLibraries>
+                        <artifact>org.mongodb:mongo-java-driver:3.6.3</artifact>
+                    </testPlanLibraries>
+                    <excludedArtifacts>
+                        <artifact>org.mongodb:mongo-java-driver</artifact>
+                    </excludedArtifacts>
+						</configuration>
+						
+						
+						<dependencies>
+					<dependency>
+						<groupId>kg.apc</groupId>
+						<artifactId>jmeter-plugins</artifactId>
+						<version>1.4.0</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.apache.thrift</groupId>
+								<artifactId>thrift</artifactId>
+							</exclusion>
+						</exclusions>
+						<type>pom</type>
+					</dependency>							
+					<dependency>
+						<groupId>kg.apc</groupId>
+						<artifactId>jmeter-plugins-extras-libs</artifactId>
+						<version>1.4.0</version>
+					  </dependency>
+					  
+
+					  
+					  <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+					<dependency>
+						<groupId>org.mongodb</groupId>
+						<artifactId>mongo-java-driver</artifactId>
+						<version>3.6.3</version>
+					</dependency>
+					
+					
+					<!-- https://mvnrepository.com/artifact/com.gmongo/gmongo -->
+<!--<dependency>
+    <groupId>com.gmongo</groupId>
+    <artifactId>gmongo</artifactId>
+    <version>1.5</version>
+</dependency>-->
+<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+<dependency>
+    <groupId>org.codehaus.groovy</groupId>
+    <artifactId>groovy-all</artifactId>
+    <version>2.4.7</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-jsr223 -->
+<dependency>
+    <groupId>org.codehaus.groovy</groupId>
+    <artifactId>groovy-jsr223</artifactId>
+    <version>2.4.12</version>
+    <scope>runtime</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.beanshell/bsh -->
+<dependency>
+    <groupId>org.beanshell</groupId>
+    <artifactId>bsh</artifactId>
+    <version>2.0b5</version>
+</dependency>
+
+
+
+</dependencies>
+
+					
+					
+			</plugin>		
+					
+			
+			<!--<plugin>
+		  					<groupId>org.codehaus.mojo</groupId>
+		  					<artifactId>xml-maven-plugin</artifactId>
+		  					 <version>1.0.1</version>
+		  					<executions>
+		  						<execution>
+		  						     <id>transform-xsl</id>
+		  							 <phase>verify</phase>
+		  							  <goals>
+		  							       <goal>transform</goal>
+		  							 </goals>
+		  						 </execution>
+		  					 </executions>
+		  					 <configuration>
+		  						 <transformationSets>
+		  							<transformationSet>
+		  								 <dir>${basedir}/target/jmeter/results</dir>
+		  								  <stylesheet>${basedir}/src/test/resources/jmeter-results-detail-report.xsl</stylesheet>
+		  								  <outputDir>${basedir}/target/jmeter/results</outputDir>
+		  								  <fileMappers>
+		  									  <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+		  									 <targetExtension>html</targetExtension>
+		  									  </fileMapper>
+		  								  </fileMappers>
+		  							 </transformationSet>
+		  						 </transformationSets>
+		  					  </configuration>
+		  				</plugin>-->
+						
+            </plugins>
+         </build>
+      </profile>
+	  
+      <profile>
+         <id>report</id>
+         <activation>
+            <activeByDefault>false</activeByDefault>
+         </activation>
+         
+         <build>
+		 <plugins>
+		 <plugin>
+		  					<groupId>org.codehaus.mojo</groupId>
+		  					<artifactId>xml-maven-plugin</artifactId>
+		  					 <version>1.0.1</version>
+		  					<executions>
+		  						<execution>
+		  						     <id>transform-xsl</id>
+		  							 <phase>verify</phase>
+		  							  <goals>
+		  							       <goal>transform</goal>
+		  							 </goals>
+		  						 </execution>
+		  					 </executions>
+		  					 <configuration>
+		  						 <transformationSets>
+		  							<transformationSet>
+		  								 <dir>${basedir}/target/jmeter/results</dir>
+		  								  <stylesheet>${basedir}/src/test/resources/jmeter-results-detail-report.xsl</stylesheet>
+		  								  <outputDir>${basedir}/target/jmeter/results</outputDir>
+		  								  <fileMappers>
+		  									  <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.FileExtensionMapper">
+		  									 <targetExtension>html</targetExtension>
+		  									  </fileMapper>
+		  								  </fileMappers>
+		  							 </transformationSet>
+		  						 </transformationSets>
+		  					  </configuration>
+		  				</plugin>
+						
+            </plugins>
+			</build>
+			</profile>
+	  
+   </profiles>
+</project>

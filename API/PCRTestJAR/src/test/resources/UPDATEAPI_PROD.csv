@@ -1,0 +1,361 @@
+clientId,Contenttype,FieldNames,method,uniquekey,jurisdiction,FieldNamesvalue,uniquekeyvalue,filename,update,metadata,filetobeuploaded,metadatafield,downloadfileformat,Result
+VERISK_001,FRM,,UpdateApplicability,VERISK_001/FRM/CA21111116,id,,,FormUpload.doc,INSERT,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 01 16"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""CA21111116"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL5"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.doc,,,change Jurisdiction
+VERISK_001,FRM,,UpdateApplicability,VERISK_001/FRM/CA21111116,CA,,,FormUpload.doc,APPLICABILITY_UPDATE,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 01 16"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""CA21111116"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""CA"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.doc,,,change formnumber and Displayformnumber
+VERISK_001,FRM,,UpdateDocument,VERISK_001/FRM/CA21111116,id,,,FormUpload.doc,DOCUMENT_UPDATE,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 01 16"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""CA21111116"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""CA"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.doc,,doc,check formnumber exists
+VERISK_001,FRM,,UpdateDocument,VERISK_001/FRM/CA21111116,id,,,FormUpload.pdf,DOCUMENT_ATTACHMENT,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 01 16"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""CA21111116"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""CA"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.pdf,,pdf,check formnumber exists
+VERISK_001,FRM,,UpdateMetadata,VERISK_001/FRM/CA21111116,Updating the title,,,FormUpload.doc,METADATA_ONLY,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""Updating the title"",   ""displayFormNumber"": ""FI 22 40 01 16"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""CA21111116"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""CA"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.doc,derivedFrom,,change derived from and check formnumber exists
+VERISK_001,LSC,,UpdateApplicability,FormUpload_lsc.zip,,,,FormUpload_lsc.zip,INSERT,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""1999"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_lsc.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_lsc.zip,,,change manualversion and ntm value
+VERISK_001,LSC,,UpdateMetadata,FormUpload_lsc.zip,2016,,,FormUpload_lsc.zip,METADATA_ONLY,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""2016"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_lsc.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_lsc.zip,manualProductType:,,"change ""manualProductType"""
+VERISK_001,CLM,,UpdateApplicability,VERISK_001/CLM/IMH/CM/CA/RU/AC_001_IMH-CA-2004-RU-111.htm,,,,FormUpload_prm.zip,INSERT,"{
+ ""productId"": ""IMH"",
+ ""serviceCode"": ""RU"",
+ ""documentName"": ""AC_001_IMH-CA-2004-RU-111"",
+ ""additionalRuleType"": ""AC"",
+ ""tableOfContentsPath"": ""IMH\\CM\\CA\\RU\\AC_001_IMH-CA-2004-RU-111.htm"",
+ ""topicId"": ""001"",
+ ""specificCompanyCode"": ""ISO1"",
+ ""earliestEffectiveDate_dt"": ""2005-01-01 00:00:00.0"",
+ ""publisher"": ""ISO"",
+ ""stateCode"": ""CA"",
+ ""ntm"": ""IMH-CA-2004-RU-001"",
+ ""jurisdiction"": ""CA1"",
+ ""filingId"": ""CM-02-IMHB1"",
+ ""lob"": ""CM1"",
+ ""effectiveDate"": ""2005-01-01 00:00:00.0"",
+ ""expirationDate"": ""2016-05-01 00:00:00.0"",
+ ""lobCode"": ""CM"",
+ ""contentType"": ""CLM"",
+ ""topicDescription"": ""ALL CLASSES - UNDERWRITING INFORMATION""
+}",AC_001_IMH-AK-2004-RU-002.html,,, CHANGE documentName FROM 001 AND tableOfContentsPath and ensure test data file in the folder
+VERISK_001,CLM,,UpdateApplicability,VERISK_001/CLM/IMH/CM/CA/RU/AC_001_IMH-CA-2004-RU-111.htm,CA,,,FormUpload_prm.zip,APPLICABILITY_UPDATE,"{
+ ""productId"": ""IMH"",
+ ""serviceCode"": ""RU"",
+ ""documentName"": ""AC_001_IMH-CA-2004-RU-111"",
+ ""additionalRuleType"": ""AC"",
+ ""tableOfContentsPath"": ""IMH\\CM\\CA\\RU\\AC_001_IMH-CA-2004-RU-111.htm"",
+ ""topicId"": ""001"",
+ ""specificCompanyCode"": ""ISO1"",
+ ""earliestEffectiveDate_dt"": ""2005-01-01 00:00:00.0"",
+ ""publisher"": ""ISO"",
+ ""stateCode"": ""CA"",
+ ""ntm"": ""IMH-CA-2004-RU-001"",
+ ""jurisdiction"": ""CA"",
+ ""filingId"": ""CM-02-IMHB1"",
+ ""lob"": ""CM1"",
+ ""effectiveDate"": ""2005-01-01 00:00:00.0"",
+ ""expirationDate"": ""2016-05-01 00:00:00.0"",
+ ""lobCode"": ""CM"",
+ ""contentType"": ""CLM"",
+ ""topicDescription"": ""ALL CLASSES - UNDERWRITING INFORMATION""
+}",AC_001_IMH-AK-2004-RU-002.html,,,change Jurisdiction
+VERISK_001,CLM,,UpdateDocument,VERISK_001/CLM/IMH/CM/CA/RU/AC_001_IMH-CA-2004-RU-111.htm,,,,FormUpload_rul.zip,DOCUMENT_UPDATE,"{
+ ""productId"": ""IMH"",
+ ""serviceCode"": ""RU"",
+ ""documentName"": ""AC_001_IMH-CA-2004-RU-111"",
+ ""additionalRuleType"": ""AC"",
+ ""tableOfContentsPath"": ""IMH\\CM\\CA\\RU\\AC_001_IMH-CA-2004-RU-111.htm"",
+ ""topicId"": ""001"",
+ ""specificCompanyCode"": ""ISO1"",
+ ""earliestEffectiveDate_dt"": ""2005-01-01 00:00:00.0"",
+ ""publisher"": ""ISO"",
+ ""stateCode"": ""CA"",
+ ""ntm"": ""IMH-CA-2004-RU-001"",
+ ""jurisdiction"": ""CA1"",
+ ""filingId"": ""CM-02-IMHB1"",
+ ""lob"": ""CM1"",
+ ""effectiveDate"": ""2005-01-01 00:00:00.0"",
+ ""expirationDate"": ""2016-05-01 00:00:00.0"",
+ ""lobCode"": ""CM"",
+ ""contentType"": ""CLM"",
+ ""topicDescription"": ""ALL CLASSES - UNDERWRITING INFORMATION""
+}",AC_001_IMH-AK-2004-RU-002.html,,,
+VERISK_001,EMI,,UpdateApplicability,VERISK_001/EMI/POST-9999,,,,AC_001_IMH-AK-2004-RU-002.html,INSERT,"{
+    
+    ""visibility"" : [ 
+        ""toUser""
+    ],
+    ""isPublished_str"" : ""yes"",
+    ""author"" : ""EPAMTEST1"",
+    
+    ""client_id"" : ""VERISK_001"",
+    
+    ""htmlContent"" : ""Alternative to Fracking? \n\nIn a paper published in Proceedings\nof the National Academy of Sciences."",
+    ""searcheable"" : ""yes"",
+    ""deleted"" : ""no"",
+    ""realTitle"" : [ 
+        "" Alternative to Fracking""
+    ],
+    ""db_id"" : ""9999"",
+    
+    ""postName"" : ""9999"",
+    ""eiType"" : ""POST"",
+   
+    ""tag"" : ""Hydraulic Fracturing-Health and Environment,Hydraulic Fracturing"",
+    
+    ""contentType"" : ""EMI"",
+    ""uniqueId"" : ""EMIPOST9999""
+}",AC_001_IMH-AK-2004-RU-002.html,,, CHANGE db_id
+VERISK_001,EMI,,UpdateMetadata,VERISK_001/EMI/POST-9999,Jyotish,,,AC_001_IMH-AK-2004-RU-002.html,METADATA_ONLY,"{
+    
+    ""visibility"" : [ 
+        ""toUser""
+    ],
+    ""isPublished_str"" : ""yes"",
+    ""author"" : ""Jyotish"",
+    
+    ""client_id"" : ""VERISK_001"",
+    
+    ""htmlContent"" : ""Alternative to Fracking? \n\nIn a paper published in Proceedings\nof the National Academy of Sciences."",
+    ""searcheable"" : ""yes"",
+    ""deleted"" : ""no"",
+    ""realTitle"" : [ 
+        "" Alternative to Fracking""
+    ],
+    ""db_id"" : ""9999"",
+    
+    ""postName"" : ""9999"",
+    ""eiType"" : ""POST"",
+   
+    ""tag"" : ""Hydraulic Fracturing-Health and Environment,Hydraulic Fracturing"",
+    
+    ""contentType"" : ""EMI"",
+    ""uniqueId"" : ""EMIPOST9999""
+}",AC_001_IMH-AK-2004-RU-002.html,author,,change author
+VERISK_001,CRC,,UpdateApplicability,VERISK_001/CRC/AS-CA-2016-999,,,,LICA2011003.pdf,INSERT,"{
+""serviceType"" : """",
+""fileName"" : ""FileUpload"",
+""replacementForLineOfBusinessAlphaCode"" : """",
+""year"" : ""2006"",
+""replacementForCircularTypeCode"" : """",
+""replacedByLineOfBusinessAlphaCode"" : """",
+""circularDate"" : ""2017-08-30T00:00:00.0Z"",
+""client_id"" : ""VERISK_001"",
+""objectType"" : ""15"",
+""circularReleaseToProductionDate"" : ""2017-09-07T06:00:05.787Z"",
+""primaryYear"" : ""2006"",
+""ignored_record_type"" : ""new_publish_insert"",
+""numberOfPages"" : ""19"",
+""circularSubType"" : """",
+""primarySequenceNumber"" : ""007"",
+""replacedByCircularSequenceNumber"" : """",
+""coverLetterOnlyFlag"" : ""N"",
+""headline"" : ""TEST EMERGING ISSUES PANEL AGENDA ENCLOSED"",
+""contentType"" : ""CRC"",
+""productType"" : ""AM"",
+""primaryLob"" : ""AL"",
+""activeFlag"" : ""1"",
+""sequenceNumber"" : ""007"",
+""replacedByCircularYear"" : """",
+""messageKey"" : """",
+""replacedByCircularTypeCode"" : """",
+""displayFormat"" : ""AS-CA-2016-999"",
+""newFileName"" : ""FileUpload"",
+""actionType"" : ""M01"",
+""primaryProductType"" : ""AM"",
+""replacementForCircularYear"" : """",
+""replacementForCircularSequenceNumber"" : """",
+""jurisdiction"" : ""AK"",
+""lob"" : ""AL"",
+""multiStateIndicator"" : ""1"",
+""updatedProductType"" : ""C""
+}",FormUpload.pdf,,,"change newFileName,fileName and Colum"" I"" filevalue value for new insert"
+VERISK_001,CRC,,UpdateApplicability,VERISK_001/CRC/AS-CA-2016-999,CA,,,LICA2011004.pdf,APPLICABILITY_UPDATE,"{
+""serviceType"" : """",
+""fileName"" : ""FileUpload"",
+""replacementForLineOfBusinessAlphaCode"" : """",
+""year"" : ""2006"",
+""replacementForCircularTypeCode"" : """",
+""replacedByLineOfBusinessAlphaCode"" : """",
+""circularDate"" : ""2017-08-30T00:00:00.0Z"",
+""client_id"" : ""VERISK_001"",
+""objectType"" : ""15"",
+""circularReleaseToProductionDate"" : ""2017-09-07T06:00:05.787Z"",
+""primaryYear"" : ""2006"",
+""ignored_record_type"" : ""new_publish_insert"",
+""numberOfPages"" : ""19"",
+""circularSubType"" : """",
+""primarySequenceNumber"" : ""007"",
+""replacedByCircularSequenceNumber"" : """",
+""coverLetterOnlyFlag"" : ""N"",
+""headline"" : ""TEST EMERGING ISSUES PANEL AGENDA ENCLOSED"",
+""contentType"" : ""CRC"",
+""productType"" : ""AM"",
+""primaryLob"" : ""AL"",
+""activeFlag"" : ""1"",
+""sequenceNumber"" : ""007"",
+""replacedByCircularYear"" : """",
+""messageKey"" : """",
+""replacedByCircularTypeCode"" : """",
+""displayFormat"" : ""AS-CA-2016-999"",
+""newFileName"" : ""FileUpload"",
+""actionType"" : ""M01"",
+""primaryProductType"" : ""AM"",
+""replacementForCircularYear"" : """",
+""replacementForCircularSequenceNumber"" : """",
+""jurisdiction"" : ""CA"",
+""lob"" : ""AL"",
+""multiStateIndicator"" : ""1"",
+""updatedProductType"" : ""C""
+}
+
+
+
+",FormUpload.pdf,,,change Jurisdiction
+VERISK_001,CRC,,UpdateDocument,VERISK_001/CRC/AS-CA-2016-999,,,,LICA2011004.pdf,DOCUMENT_UPDATE,"{
+""serviceType"" : """",
+""fileName"" : ""FileUpload"",
+""replacementForLineOfBusinessAlphaCode"" : """",
+""year"" : ""2006"",
+""replacementForCircularTypeCode"" : """",
+""replacedByLineOfBusinessAlphaCode"" : """",
+""circularDate"" : ""2017-08-30T00:00:00.0Z"",
+""client_id"" : ""VERISK_001"",
+""objectType"" : ""15"",
+""circularReleaseToProductionDate"" : ""2017-09-07T06:00:05.787Z"",
+""primaryYear"" : ""2006"",
+""ignored_record_type"" : ""new_publish_insert"",
+""numberOfPages"" : ""19"",
+""circularSubType"" : """",
+""primarySequenceNumber"" : ""007"",
+""replacedByCircularSequenceNumber"" : """",
+""coverLetterOnlyFlag"" : ""N"",
+""headline"" : ""TEST EMERGING ISSUES PANEL AGENDA ENCLOSED"",
+""contentType"" : ""CRC"",
+""productType"" : ""AM"",
+""primaryLob"" : ""AL"",
+""activeFlag"" : ""1"",
+""sequenceNumber"" : ""007"",
+""replacedByCircularYear"" : """",
+""messageKey"" : """",
+""replacedByCircularTypeCode"" : """",
+""displayFormat"" : ""AS-CA-2016-999"",
+""newFileName"" : ""FileUpload"",
+""actionType"" : ""M01"",
+""primaryProductType"" : ""AM"",
+""replacementForCircularYear"" : """",
+""replacementForCircularSequenceNumber"" : """",
+""jurisdiction"" : ""AK"",
+""lob"" : ""AL"",
+""multiStateIndicator"" : ""1"",
+""updatedProductType"" : ""C""
+}",FormUpload.pdf,,pdf,
+VERISK_001,CRC,,UpdateDocument,VERISK_001/CRC/AS-CA-2016-999,,,,LICA2011003.zip,DOCUMENT_ATTACHMENT,"{
+""serviceType"" : """",
+""fileName"" : ""FileUpload"",
+""replacementForLineOfBusinessAlphaCode"" : """",
+""year"" : ""2006"",
+""replacementForCircularTypeCode"" : """",
+""replacedByLineOfBusinessAlphaCode"" : """",
+""circularDate"" : ""2017-08-30T00:00:00.0Z"",
+""client_id"" : ""VERISK_001"",
+""objectType"" : ""15"",
+""circularReleaseToProductionDate"" : ""2017-09-07T06:00:05.787Z"",
+""primaryYear"" : ""2006"",
+""ignored_record_type"" : ""new_publish_insert"",
+""numberOfPages"" : ""19"",
+""circularSubType"" : """",
+""primarySequenceNumber"" : ""007"",
+""replacedByCircularSequenceNumber"" : """",
+""coverLetterOnlyFlag"" : ""N"",
+""headline"" : ""TEST EMERGING ISSUES PANEL AGENDA ENCLOSED"",
+""contentType"" : ""CRC"",
+""productType"" : ""AM"",
+""primaryLob"" : ""AL"",
+""activeFlag"" : ""1"",
+""sequenceNumber"" : ""007"",
+""replacedByCircularYear"" : """",
+""messageKey"" : """",
+""replacedByCircularTypeCode"" : """",
+""displayFormat"" : ""AS-CA-2016-999"",
+""newFileName"" : ""FileUpload"",
+""actionType"" : ""M01"",
+""primaryProductType"" : ""AM"",
+""replacementForCircularYear"" : """",
+""replacementForCircularSequenceNumber"" : """",
+""jurisdiction"" : ""AK"",
+""lob"" : ""AL"",
+""multiStateIndicator"" : ""1"",
+""updatedProductType"" : ""C""
+}",FormUpload.zip,,zip,
+VERISK_001,PRM,,UpdateApplicability,FormUpload_prm.zip,,,,FormUpload_prm.zip,INSERT,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""1999"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_prm.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_prm.zip,,,change manualversion and ntm value
+VERISK_001,PRM,,UpdateMetadata,FormUpload_prm.zip,2016,,,FormUpload_prm.zip,METADATA_ONLY,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""2016"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_prm.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_prm.zip,,,"change ""manualProductType"""
+VERISK_001,RUL,,UpdateApplicability,FormUpload_rul.zip,,,,FormUpload_rul.zip,INSERT,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""1999"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_rul.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_rul.zip,,,change manualversion and ntm value
+VERISK_001,RUL,,UpdateMetadata,FormUpload_rul.zip,2016,,,FormUpload_rul.zip,METADATA_ONLY,"{  ""manualProductIdentifier"": ""5436"",  ""manualProductAcronymCode"": ""SIM"",  ""lob"": ""DP"",  ""jurisdiction"": ""SD"",  ""serviceTypeCode"": ""LC"",  ""Year"": ""2016"",  ""manualVersion"": ""006"",  ""manualProductType"": ""C"",  ""ntm"": ""DP-SD-1999-LC-006"",  ""type"": ""N"",  ""status"": ""P"",  ""filingId"": ""1234"",  ""zippath"": ""/download/DP/"",  ""documentName"": ""FormUpload_rul.zip"",  ""pdfpath"": ""/view/DP/"",  ""pdffilename"": ""FormUpload.pdf"",  ""effectiveDate"": ""2012-01-01 05:00:00.0"" }",FormUpload_rul.zip,,,"change ""manualProductType"""
+VERISK_001,MLC,,UpdateApplicability,VERISK_001/MLC/9999,,,,,INSERT,"{
+ ""classTableId"": ""9999"",
+ ""expirationNTM"": """",
+ ""classLimit"": """",
+ ""noc"": """",
+ ""notes"": ""The following shall be separately classified and rated: \r\r� Ore milling or processing\r\r� Stone crushing"",
+ ""pma"": """",
+ 
+ ""ntm"": ""CT-MU-2002-RU-001"",
+ ""jurisdiction"": ""AK"",
+ ""rateGroup"": """",
+ ""classID"": ""50010"",
+ ""sicCode"": ""3291"",
+ ""naicsDescription"": ""Abrasive Product Manufacturing"",
+ ""effectiveNTM"": ""CTREF-MU-2002-RU-002"",
+ ""id"": ""9b9c403f-29c5-4058-9041-22604d6fb94e"",
+ ""naics"": ""32791"",
+ ""lob"": ""GL"",
+ ""effectiveDate"": ""2002-07-01"",
+ ""sicDescription"": ""Abrasive Products (except steel wool with or without soap)"",
+ ""expirationDate"": ""2999-01-01"",
+ ""premiumBase"": ""Gross Sales"",
+ ""muState"": ""MU"",
+ ""classDescription"": ""Abrasive Wheel Mfg.""
+}",,,,change classTableId value AND metadata_classTable_id
+VERISK_001,MLC,,UpdateApplicability,VERISK_001/MLC/9999,CA,,,,APPLICABILITY_UPDATE,"{
+ ""classTableId"": ""9999"",
+ ""expirationNTM"": """",
+ ""classLimit"": """",
+ ""noc"": """",
+ ""notes"": ""The following shall be separately classified and rated: \r\r� Ore milling or processing\r\r� Stone crushing"",
+ ""pma"": """",
+ 
+ ""ntm"": ""CT-MU-2002-RU-001"",
+ ""jurisdiction"": ""CA"",
+ ""rateGroup"": """",
+ ""classID"": ""50010"",
+ ""sicCode"": ""3291"",
+ ""naicsDescription"": ""Abrasive Product Manufacturing"",
+ ""effectiveNTM"": ""CTREF-MU-2002-RU-002"",
+ ""id"": ""9b9c403f-29c5-4058-9041-22604d6fb94e"",
+ ""naics"": ""32791"",
+ ""lob"": ""GL"",
+ ""effectiveDate"": ""2002-07-01"",
+ ""sicDescription"": ""Abrasive Products (except steel wool with or without soap)"",
+ ""expirationDate"": ""2999-01-01"",
+ ""premiumBase"": ""Gross Sales"",
+ ""muState"": ""MU"",
+ ""classDescription"": ""Abrasive Wheel Mfg.""
+}",,,,change Jurisdiction
+VERISK_001,LMN,,UpdateApplicability,VERISK_001/LMN/CL-9898,,,,,INSERT,"{
+ ""lmonDB"": ""CL"",
+ ""comments"": ""Filing approved and will be implemented November, 2006.|"",
+ ""jurisdiction"": ""CA"",
+ ""lmonRecNum"": ""9898"",
+ ""circularReference"": [
+  ""LI-CR-2006-075"",
+  ""06/05/2006"",
+  ""LI-CR-2006-074"",
+  ""06/05/2006""
+ ],
+ ""supportForm"": [],
+ ""contact"": [
+  ""Lennox Price"",
+  ""2802""
+ ],
+ ""proceduralRequirement"": [],
+ ""lob"": ""COMB"",
+ ""itemDescription"": ""2004 Cal. Stat. ___ (former A.B. 2208); coverage provided to a registered domestic partner of an insured must equal, and be subject to the same terms and conditions as, the coverage provided to a spouse."",
+ ""csvFileCreateDate"": ""2006-12-18T13:59:29.2Z"",
+ ""contentType"": ""LMN"",
+ ""effectiveDate"": ""2005-01-01T00:00:00Z"",
+ ""status"": ""Done"",
+ ""lType"": [
+  ""Form"",
+  ""Rule""
+ ]
+}",,,,"change lmonRecNum,jurisdiction"

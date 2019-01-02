@@ -1,0 +1,63 @@
+clientId,Contenttype,FieldNames,method,uniquekey,uniquekey1,FieldNamesvalue,uniquekeyvalue,filename,update,metadata,filetobeuploaded,metadatafield,downloadfileformat,Result
+VERISK_001,FRM,id,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formNumber,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,stateType,search,formNumber,id,,,,,,,,,fail-search
+VERISK_001,FRM,jurisdiction,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,multiState,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,language,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,title,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,displayFormNumber,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,mandatory,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,circularDate,searchdate,formNumber,id,,,,,,,,,
+VERISK_001,FRM,update_date,searchdate,formNumber,id,,,,,,,,,fail-searchdate
+VERISK_001,FRM,formLobType,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formNumber,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,filingId,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,contentType,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,circularNumber,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formsType,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,documentName,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,tags,search,formNumber,id,,,,,,,,,fail-search
+VERISK_001,FRM,earliestEffectiveDate_dt,searchdate,formNumber,id,,,,,,,,,
+VERISK_001,FRM,withDrawnDate,searchdate,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formStatus,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,lob,search,formNumber,id,,,,,,,,,
+VERISK_001,FRM,effectiveDate,searchdate,formNumber,id,,,,,,,,,
+VERISK_001,FRM,doc_text_content,search,formNumber,id,,,,,,,,,fail-search
+VERISK_001,FRM,derivedFrom,search,formNumber,id,,,,,,,,,fail-search
+VERISK_001,FRM,title,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,displayFormNumber,sort,formNumber,id,,,,,,,,,
+VERISK_001,FRM,client_id,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,circularDate,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,score,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,formNumber,sort,formNumber,id,,,,,,,,,
+VERISK_001,FRM,earliestEffectiveDate_dt,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,withDrawnDate,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,formStatus,sort,formNumber,id,,,,,,,,,fail-sort
+VERISK_001,FRM,jurisdiction,facet,formNumber,id,,,,,,,,,fail-facet
+VERISK_001,FRM,multiState,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,language,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,mandatory,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,client_id,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,contentType,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formsType,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,tags,facet,formNumber,id,,,,,,,,,fail-facet
+VERISK_001,FRM,formStatus,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,lob,facet,formNumber,id,,,,,,,,,
+VERISK_001,FRM,formNumber,group,formNumber,id,,,,,,,,,fail-group
+VERISK_001,FRM,_text_,specialcharsearch,formNumber,id,"\""newly-acquired-auto\""",NC00120114,,,,,,,
+VERISK_001,FRM,_text_cs_,specialcharsearch,formNumber,id,"\""newly-acquired-auto\""",NC00120114,,,,,,,
+VERISK_001,FRM,_content_,specialcharsearch,formNumber,id,"\""newly-acquired-auto\""",NC00120114,,,,,,,
+VERISK_001,FRM,_content_cs_,specialcharsearch,formNumber,id,"\""newly-acquired-auto\""",NC00120114,,,,,,,
+VERISK_001,FRM,_text_,charsearch,formNumber,id,auto,NC00120114,,,,,,,
+VERISK_001,FRM,_text_cs_,charsearch,formNumber,id,newly,NC00120114,,,,,,,
+VERISK_001,FRM,_content_,charsearch,formNumber,id,auto,NC00120114,,,,,,,
+VERISK_001,FRM,_content_cs_,charsearch,formNumber,id,newly,NC00120114,,,,,,,fail-searchscope
+VERISK_001,FRM,,searchscope,,,,,,,,,,,
+VERISK_001,FRM,,uniquekeysearch,formNumber,id,,NC00120114,,,,,,,
+VERISK_001,FRM,,partialkeysearch,formNumber,id,,NC00,,,,,,,
+VERISK_001,FRM,,UpdateApplicability,formNumber,id,,,FormUpload.doc,APPLICABILITY_UPDATE,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 05 15"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""FI22400515"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL5"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.docx,,,change Jurisdiction
+VERISK_001,FRM,,UpdateApplicability,formNumber,id,,,FormUpload.doc,INSERT,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 05 18"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""FI22400518"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.docx,,,change formnumber and Displayformnumber
+VERISK_001,FRM,,UpdateDocument,formNumber,id,,,FormUpload.doc,DOCUMENT_UPDATE,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 05 15"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""FI22400515"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL4"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.docx,,doc,check formnumber exists
+VERISK_001,FRM,,UpdateDocument,formNumber,id,,,FormUpload.pdf,DOCUMENT_ATTACHMENT,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 05 15"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""FI22400515"",   ""filingId"": """",   ""derivedFrom"": ""FI00400605"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL4"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.pdf,,pdf,check formnumber exists
+VERISK_001,FRM,,UpdateMetadata,formNumber,id,,,FormUpload.doc,METADATA_ONLY,"{  ""documentType"": ""doc"",   ""multiState"": ""true"",   ""language"": ""E"",             ""title"": ""FINANCIAL INSTITUTION COMBINATION SAFE DEPOSITORY POLICY"",   ""displayFormNumber"": ""FI 22 40 05 15"",   ""mandatory"": ""Y"",   ""circularDate"": """",   ""formLobType"": ""FI"",   ""formNumber"": ""FI22400515"",   ""filingId"": """",   ""derivedFrom"": ""FI00400615"",   ""circularNumber"": """",   ""directoryName"": ""FIFORMS"",   ""formsType"": ""C"",   ""objectTypeCode"": ""13"",   ""documentName"": ""FormUpload"",   ""categoryCode"": ""00"",   ""formStatus"": ""X"",   ""availabilityDate"": ""1900-01-01 04:00:00.000"",   ""withDrawnDate"": ""2999-01-01"",   ""jurisdiction"": ""AL4"",   ""effectiveDate"": ""2008-05-01 04:00:00.000"",   ""lob"": ""IF"" }",FormUpload.docx,derivedFrom,,change derived from and check formnumber exists

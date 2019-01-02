@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1538556251000</longProp>
+        <longProp name="ThreadGroup.end_time">1538556251000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="uatserver" elementType="Argument">
+              <stringProp name="Argument.name">uatserver</stringProp>
+              <stringProp name="Argument.value">pcr-uat.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="csv" elementType="Argument">
+              <stringProp name="Argument.name">csv</stringProp>
+              <stringProp name="Argument.value">${__property(csvSource,,C:\Users\i20918\Desktop\PCR\pcr_automation\pcr_test\develop\pcr.test\API\PCRMissingDocIdsVerificationJAR\src\test\resources)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">C://Users//i20918//Desktop//PCR//APITestData</stringProp>
+            </elementProp>
+            <elementProp name="Environment" elementType="Argument">
+              <stringProp name="Argument.name">Environment</stringProp>
+              <stringProp name="Argument.value">${__property(Server,,uat)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="stgserver" elementType="Argument">
+              <stringProp name="Argument.name">stgserver</stringProp>
+              <stringProp name="Argument.value">staging-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="prodserver" elementType="Argument">
+              <stringProp name="Argument.name">prodserver</stringProp>
+              <stringProp name="Argument.value">pcr-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="uatSolr" elementType="Argument">
+              <stringProp name="Argument.name">uatSolr</stringProp>
+              <stringProp name="Argument.value">10.93.204.24</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="stagingSolr" elementType="Argument">
+              <stringProp name="Argument.name">stagingSolr</stringProp>
+              <stringProp name="Argument.value">0931-pcrslr-u01.veriska.local</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="prodSolr" elementType="Argument">
+              <stringProp name="Argument.name">prodSolr</stringProp>
+              <stringProp name="Argument.value">10.53.196.25</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="devserver" elementType="Argument">
+              <stringProp name="Argument.name">devserver</stringProp>
+              <stringProp name="Argument.value">pcr-uat.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="devSolr" elementType="Argument">
+              <stringProp name="Argument.name">devSolr</stringProp>
+              <stringProp name="Argument.value">10.93.204.103</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="script">import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.MongoCredential;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.apache.jmeter.util.JMeterUtils;
+import com.mongodb.*;
+
+
+
+
+MongoClient coreMongoClient;
+		
+		if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;prod&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;prodserver&quot;));
+			vars.put(&quot;Mongodbserver&quot;,&quot;0931-PCRMGD-P01.veriskp.local&quot;);
+			vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			vars.put(&quot;solrServer&quot;,vars.get(&quot;prodSolr&quot;));
+			vars.put(&quot;userName&quot;,&quot;PCRREADUSRP&quot;);
+			vars.put(&quot;source&quot;,&quot;admin&quot;);
+			
+			MongoCredential mongoCredential = MongoCredential.createScramSha1Credential(&quot;PCRREADUSRP&quot;,&quot;admin&quot;,&apos;6rUbEwu#\$&apos;.toCharArray());
+    			coreMongoClient = new MongoClient(new ServerAddress(&quot;0931-PCRMGD-P01.veriskp.local&quot;, 27017), Arrays.asList(mongoCredential));
+		}
+			
+		else if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;stg&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;stgserver&quot;));
+			vars.put(&quot;Mongodbserver&quot;,&quot;0931-PCRMGD-U01.veriska.local&quot;);
+			vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			vars.put(&quot;solrServer&quot;,vars.get(&quot;stagingSolr&quot;));
+			vars.put(&quot;userName&quot;,&quot;PIDPCRBPA&quot;);
+			//vars.put(&quot;passWord&quot;,&apos;pRU6Refe\$&apos;);
+			//char[] pass=&apos;pRU6Refe$&apos;;
+			//&apos;pRU6Refe\$&apos;.toCharArray()
+			vars.put(&quot;source&quot;,&quot;admin&quot;);
+			MongoCredential mongoCredential = MongoCredential.createScramSha1Credential(&quot;PIDPCRBPA&quot;,&quot;admin&quot;,&apos;pRU6Refe\$&apos;.toCharArray());
+    			coreMongoClient = new MongoClient(new ServerAddress(&quot;0931-PCRMGD-U01.veriska.local&quot;, 27017),Arrays.asList(mongoCredential));
+    		}
+    		
+		else if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;uat&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;uatserver&quot;));
+			vars.put(&quot;Mongodbserver&quot;,&quot;10.93.204.78&quot;);
+			
+			vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			vars.put(&quot;solrServer&quot;,vars.get(&quot;uatSolr&quot;));
+			coreMongoClient = new MongoClient(&quot;10.93.204.78&quot;, 27017);
+			
+			
+			
+			//vars.put(&quot;Mongodbserver&quot;,&quot;0931-PCRMGD-U01.veriska.local&quot;);
+			//vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+		}
+
+		else if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;dev&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;devserver&quot;));
+			vars.put(&quot;Mongodbserver&quot;,&quot;10.93.204.215&quot;);
+			
+			vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			vars.put(&quot;solrServer&quot;,vars.get(&quot;devSolr&quot;));
+			coreMongoClient = new MongoClient(&quot;10.93.204.215&quot;, 27017);
+			
+			
+			
+			//vars.put(&quot;Mongodbserver&quot;,&quot;0931-PCRMGD-U01.veriska.local&quot;);
+			//vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+		}
+
+		Properties properties=JMeterUtils.getJMeterProperties();
+		properties.put(&quot;coreMongoClient&quot;,coreMongoClient);
+	 
+			
+			  
+
+			  
+
+
+
+
+    
+
+
+    
+    
+    
+    </stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;${contentType}&quot; != &quot;&lt;EOF&gt;&quot;,)}</stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${csv}/MissingDocIdsVerification_${Environment}.csv</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">contentType</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-FRM" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;FRM&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-CRC" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;CRC&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-CLM" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;CLM&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-FLV" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;FLV&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-PRM" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;PRM&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-RUL" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;RUL&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-LSC" enabled="true">
+            <stringProp name="IfController.condition">&quot;${contentType}&quot;.equalsIgnoreCase(&quot;LSC&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Verify if records are missing docIds" enabled="true">
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import com.mongodb.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.apache.jmeter.testelement;
+import org.apache.jmeter.util.JMeterUtils; 
+
+
+
+
+        
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient = properties.get(&quot;coreMongoClient&quot;); 
+            
+            MongoDatabase database = coreMongoClient.getDatabase(&quot;verisk_smartcontent&quot;);
+            MongoCollection collection = database.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+            BasicDBObject query = new BasicDBObject();
+            //BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            query.put(&quot;contentType&quot;,&quot;${contentType}&quot;);
+            query.put(&quot;doc_id&quot;, new BasicDBObject(&quot;$exists&quot;,false));
+            collection.count(query);
+            
+
+    
+
+
+    
+    
+    
+    
+  	</stringProp>
+              <stringProp name="scriptLanguage">beanshell</stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">  log.info(&quot;beanshell total :&quot;+vars.get(${Total}));
+  vars.put(&quot;Appcount&quot;,Total);</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">missingDocId</stringProp>
+                <stringProp name="RegexExtractor.regex">(.*)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">asd</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">long missingDocId=Integer.parseInt(vars.get(&quot;missingDocId&quot;));
+
+
+try{
+	if(missingDocId &gt; 0){
+		
+		Failure=true;
+		FailureMessage=&quot;There are &quot;+missingDocId+&quot; records  without docIds&quot;;
+	}
+	
+
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected errors&quot;;
+	
+}
+
+
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,23 @@
+testCaseName,clientId,searchText,boolVal,contentType,lob,Expected_Val,Operator
+Verify exact match using match parameter- true scenario,PCRQA_01,"apple,mango",TRUE,FRM,,,
+Verify exact match using match parameter- false scenario,PCRQA_01,"apple,mango",FALSE,FRM,,,
+Verify expand functionalities using expand parameter -positive scenario,PCRQA_01,test111,TRUE,FRM,,test1112,
+Verify expand functionalities using expand parameter -negative scenario,PCRQA_01,test111,FALSE,FRM,,test1112,
+Verify query param with AND operator,PCRQA_01,FRM,,FRM,QA,ANDquery,AND
+Verify query param with OR operator,PCRQA_01,CRC,,FRM,QA,ANDquery,OR
+Verify query param with NOT operator,PCRQA_01,FRM,,FRM,CL,,NOT
+Verify param with - Hyphen operator,PCRQA_01,FRM,,FRM,CL,,-
+Verify content only search using searchContent param -Positive scenario,PCRQA_01,searchContentTrue3,TRUE,FRM,,searchContentTrue3,
+Verify content only search using searchContent param -negative scenario,PCRQA_01,searchContentTrue3,FALSE,FRM,,searchContentTrue3,
+Verify fuzziness functionalities with value 0 (no fuzziness),PCRQA_01,searchContentTrue3,0,FRM,,searchContentTrue3,
+Verify fuzziness functionalities with value 1,PCRQA_01,seerchContentTrue3,1,FRM,,searchContentTrue3,
+Verify fuzziness functionalities with value 2,PCRQA_01,seerchCantentTrue3,2,FRM,,searchContentTrue3,
+Verify fuzziness functionalities with value 3,PCRQA_01,seerchCantantTrue3,3,FRM,,searchContentTrue3,
+Verify operator AND in space operations,PCRQA_01,space operations,,FRM,,operations,AND
+Verify OR operator in space operations,PCRQA_01,space operations,,FRM,,operations,OR
+Verify phrase search using more than one phrases in quotes,PCRQA_01,,,FRM,,,
+Verify complex searchTerm using parentheses and operators,PCRQA_01,,,FRM,,,
+Verify Synonym parameter- true scenario,PCRQA_01,,,FRM,,,
+Verify Synonym parameter- false scenario,PCRQA_01,,,FRM,,,
+Verify language param,PCRQA_01,,,FRM,,,
+Verify advanced search using  {search:[ parameter,PCRQA_01,,,FRM,,,

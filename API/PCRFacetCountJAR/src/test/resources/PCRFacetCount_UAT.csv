@@ -1,0 +1,10 @@
+contentType,clientId,facetFields,facetLimit
+FRM,VERISK_001,formNumber,29000
+MLC,VERISK_001,uri,2000
+LMN,VERISK_001,uri,10000
+FLV,VERISK_001,uri,9000
+EMI,VERISK_001,uri,3000
+PRM,VERISK_001,documentName,25000
+RUL,VERISK_001,documentName,40000
+LSC,VERISK_001,documentName,20000
+CRC,VERISK_001,displayFormat,110000

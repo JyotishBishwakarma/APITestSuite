@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1538474445000</longProp>
+        <longProp name="ThreadGroup.end_time">1538474445000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="uatserver" elementType="Argument">
+              <stringProp name="Argument.name">uatserver</stringProp>
+              <stringProp name="Argument.value">pcr-uat.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="csv" elementType="Argument">
+              <stringProp name="Argument.name">csv</stringProp>
+              <stringProp name="Argument.value">${__property(csvSource,,C:\Users\i20918\Desktop\PCR\pcr_automation\pcr_test\develop\pcr.test\API\PCRReproducibleIdsJAR\src\test\resources)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">C://Users//i20918//Desktop//PCR//APITestData</stringProp>
+            </elementProp>
+            <elementProp name="Environment" elementType="Argument">
+              <stringProp name="Argument.name">Environment</stringProp>
+              <stringProp name="Argument.value">${__property(Server,,uat)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="stgserver" elementType="Argument">
+              <stringProp name="Argument.name">stgserver</stringProp>
+              <stringProp name="Argument.value">staging-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="prodserver" elementType="Argument">
+              <stringProp name="Argument.name">prodserver</stringProp>
+              <stringProp name="Argument.value">pcr-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="uatSolr" elementType="Argument">
+              <stringProp name="Argument.name">uatSolr</stringProp>
+              <stringProp name="Argument.value">10.93.204.24</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="stagingSolr" elementType="Argument">
+              <stringProp name="Argument.name">stagingSolr</stringProp>
+              <stringProp name="Argument.value">0931-pcrslr-u01.veriska.local</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="prodSolr" elementType="Argument">
+              <stringProp name="Argument.name">prodSolr</stringProp>
+              <stringProp name="Argument.value">10.53.196.25</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="devserver" elementType="Argument">
+              <stringProp name="Argument.name">devserver</stringProp>
+              <stringProp name="Argument.value">pcr-uat.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="devSolr" elementType="Argument">
+              <stringProp name="Argument.name">devSolr</stringProp>
+              <stringProp name="Argument.value">10.93.204.103</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="mongoConnections" enabled="true">
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="script">import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.MongoCredential;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.apache.jmeter.util.JMeterUtils;
+import com.mongodb.*;
+
+MongoClient coreMongoClient_Acceptance;
+MongoClient coreMongoClient_UAT;
+MongoClient coreMongoClient_PROD;
+
+MongoCredential mongoCredential_Acceptance = MongoCredential.createScramSha1Credential(&quot;PCRREADUSRP&quot;,&quot;admin&quot;,&apos;6rUbEwu#\$&apos;.toCharArray());
+coreMongoClient_Acceptance = new MongoClient(new ServerAddress(&quot;0931-PCRMGD-P01.veriskp.local&quot;, 27017), Arrays.asList(mongoCredential_Acceptance));
+
+MongoCredential mongoCredential_UAT = MongoCredential.createScramSha1Credential(&quot;PIDPCRBPA&quot;,&quot;admin&quot;,&apos;pRU6Refe\$&apos;.toCharArray());
+coreMongoClient_UAT = new MongoClient(new ServerAddress(&quot;0931-PCRMGD-U01.veriska.local&quot;, 27017),Arrays.asList(mongoCredential_UAT));
+
+MongoCredential mongoCredential_PROD = MongoCredential.createScramSha1Credential(&quot;PIDPCRBPA&quot;,&quot;admin&quot;,&apos;pRU6Refe\$&apos;.toCharArray());
+coreMongoClient_PROD = new MongoClient(new ServerAddress(&quot;0931-PCRMGD-U01.veriska.local&quot;, 27017),Arrays.asList(mongoCredential_PROD));
+
+Properties properties=JMeterUtils.getJMeterProperties();
+properties.put(&quot;coreMongoClient_Acceptance&quot;,coreMongoClient_Acceptance);
+properties.put(&quot;coreMongoClient_UAT&quot;,coreMongoClient_UAT);
+properties.put(&quot;coreMongoClient_PROD&quot;,coreMongoClient_PROD);
+
+</stringProp>
+          <stringProp name="scriptLanguage">groovy</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;${contentType}&quot; != &quot;&lt;EOF&gt;&quot;,)} </stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${csv}/PCRReproducibleIds_${Environment}.csv</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">idType,contentType,uri</stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-_id in MetadataCollectionID" enabled="true">
+            <stringProp name="IfController.condition">&quot;${idType}&quot;.equalsIgnoreCase(&quot;metadataCollectionId&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_ID_Acceptance - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_Acceptance = properties.get(&quot;coreMongoClient_Acceptance&quot;); 
+
+	DB coreDB = coreMongoClient_Acceptance.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONId_Acceptance</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_ID_UAT - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_UAT = properties.get(&quot;coreMongoClient_UAT&quot;); 
+
+	DB coreDB = coreMongoClient_UAT.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+  
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONId_UAT</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_ID_PROD - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+
+MongoClient coreMongoClient_PROD = properties.get(&quot;coreMongoClient_PROD&quot;); 
+
+
+	DB coreDB = coreMongoClient_PROD.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+  	
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONId_PROD</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">String metaDataCollectionId_Acceptance=vars.get(&quot;JSONId_Acceptance&quot;);
+String metaDataCollectionId_UAT=vars.get(&quot;JSONId_UAT&quot;);
+String metaDataCollectionId_PROD=vars.get(&quot;JSONId_PROD&quot;);
+
+try{
+if (metaDataCollectionId_Acceptance.equals(metaDataCollectionId_UAT) &amp;&amp; metaDataCollectionId_UAT.equals(metaDataCollectionId_PROD)){
+	Failure=false;
+	log.info(&quot;PASS&quot;);
+}else
+{
+	Failure=true;
+	FailureMessage=&quot;Acceptance :&quot;+metaDataCollectionId_Acceptance+&quot;\n&quot;+&quot;UAT :&quot;+metaDataCollectionId_UAT+&quot;\n&quot;+&quot;PROD :&quot;+metaDataCollectionId_PROD+&quot;\n&quot;+&quot;Id fields in METADATA_COLLECTION is not same for all environments for ${uri}&quot;;
+}
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected error&quot;;
+}
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller-DocID" enabled="true">
+            <stringProp name="IfController.condition">&quot;${idType}&quot;.equalsIgnoreCase(&quot;docId&quot;)</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_DocID_Acceptance - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_Acceptance = properties.get(&quot;coreMongoClient_Acceptance&quot;); 
+
+	DB coreDB = coreMongoClient_Acceptance.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONDocId_Acceptance</stringProp>
+                <stringProp name="JSONPATH">$.doc_id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_DocId_UAT - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_UAT = properties.get(&quot;coreMongoClient_UAT&quot;); 
+
+	DB coreDB = coreMongoClient_UAT.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+  
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONDocId_UAT</stringProp>
+                <stringProp name="JSONPATH">$.doc_id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_DocId_PROD - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+
+MongoClient coreMongoClient_PROD = properties.get(&quot;coreMongoClient_PROD&quot;); 
+
+
+	DB coreDB = coreMongoClient_PROD.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_METADATA_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;uri&quot;,&quot;${uri}&quot;);
+  	collection.findOne(query);
+
+  	
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONDocId_PROD</stringProp>
+                <stringProp name="JSONPATH">$.doc_id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">String JSONDocId_Acceptance=vars.get(&quot;JSONDocId_Acceptance_1&quot;);
+String JSONDocId_UAT=vars.get(&quot;JSONDocId_UAT_1&quot;);
+String JSONDocId_PROD=vars.get(&quot;JSONDocId_PROD_1&quot;);
+
+try{
+if (JSONDocId_Acceptance.equals(JSONDocId_UAT) &amp;&amp; JSONDocId_UAT.equals(JSONDocId_PROD)){
+	Failure=false;
+	log.info(&quot;PASS&quot;);
+}else
+{
+	Failure=true;
+	FailureMessage=&quot;\n&quot;+&quot;Acceptance :&quot;+JSONDocId_Acceptance+&quot;\n&quot;+&quot;UAT :&quot;+JSONDocId_UAT+&quot;\n&quot;+&quot;PROD :&quot;+JSONDocId_PROD+&quot;\n&quot;+&quot;DocId fields in METADATA_COLLECTION is not same for all environments for ${uri}&quot;;
+}
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected error&quot;;
+}
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_FacsimileID_Acceptance - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_Acceptance = properties.get(&quot;coreMongoClient_Acceptance&quot;); 
+
+	DB coreDB = coreMongoClient_Acceptance.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_LEGACY_FACSIMILE_DOCUMENTS_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;,&quot;${JSONDocId_Acceptance_1}&quot;);
+  	collection.findOne(query);
+
+
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONFacsimileId_Acceptance</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_FacsimileID_UAT - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_UAT = properties.get(&quot;coreMongoClient_UAT&quot;); 
+
+	DB coreDB = coreMongoClient_UAT.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_LEGACY_FACSIMILE_DOCUMENTS_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;,&quot;${JSONDocId_UAT_1}&quot;);
+  	collection.findOne(query);
+
+  
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONFacsimileId_UAT</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+            </hashTree>
+            <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="${contentType} - Reproducible_FacsimileID_PROD - ${uri}" enabled="true">
+              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey"></stringProp>
+              <stringProp name="script">import org.apache.jmeter.util.JMeterUtils; 
+import com.mongodb.*;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.BsonField.*;
+import com.mongodb.Block;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoException;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import org.bson.BsonNull;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+//import org.apache.jmeter.testelement;
+
+//long result;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+
+MongoClient coreMongoClient_PROD = properties.get(&quot;coreMongoClient_PROD&quot;); 
+
+
+	DB coreDB = coreMongoClient_PROD.getDB(&quot;verisk_smartcontent&quot;);
+     DBCollection collection = coreDB.getCollection(&quot;VERISK_LEGACY_FACSIMILE_DOCUMENTS_COLLECTION&quot;);
+     BasicDBObject query = new BasicDBObject(&quot;doc_id&quot;,&quot;${JSONDocId_PROD_1}&quot;);
+  	collection.findOne(query);
+
+  	
+    
+
+    
+
+
+    
+    
+    
+    </stringProp>
+            </JSR223Sampler>
+            <hashTree>
+              <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                <stringProp name="VAR">JSONFacsimileId_PROD</stringProp>
+                <stringProp name="JSONPATH">$._id</stringProp>
+                <stringProp name="DEFAULT">NOT FOUND</stringProp>
+                <stringProp name="VARIABLE"></stringProp>
+                <stringProp name="SUBJECT">BODY</stringProp>
+              </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+              <hashTree/>
+              <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                <stringProp name="BeanShellAssertion.query">String JSONFacsimileId_Acceptance=vars.get(&quot;JSONFacsimileId_Acceptance&quot;);
+String JSONFacsimileId_UAT=vars.get(&quot;JSONFacsimileId_UAT&quot;);
+String JSONFacsimileId_PROD=vars.get(&quot;JSONFacsimileId_PROD&quot;);
+
+try{
+if (JSONFacsimileId_Acceptance.equals(JSONFacsimileId_UAT) &amp;&amp; JSONFacsimileId_UAT.equals(JSONFacsimileId_PROD)){
+	Failure=false;
+	log.info(&quot;PASS&quot;);
+}else
+{
+	Failure=true;
+	FailureMessage=&quot;\n&quot;+&quot;Acceptance :&quot;+JSONFacsimileId_Acceptance+&quot;\n&quot;+&quot;UAT :&quot;+JSONFacsimileId_UAT+&quot;\n&quot;+&quot;PROD :&quot;+JSONFacsimileId_PROD+&quot;\n&quot;+&quot;Id fields in Facsimile Collection is not same for all environments for ${uri}&quot;;
+}
+}catch(Exception e){
+	Failure=true;
+	FailureMessage=&quot;Unexpected error&quot;;
+}
+</stringProp>
+                <stringProp name="BeanShellAssertion.filename"></stringProp>
+                <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+              </BeanShellAssertion>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="flush" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey"></stringProp>
+          <stringProp name="script">import com.mongodb.*;
+import org.apache.jmeter.util.JMeterUtils; 
+import org.apache.jmeter.testelement.property.CollectionProperty;
+import org.apache.jmeter.services.FileServer;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+
+Properties properties = JMeterUtils.getJMeterProperties();
+MongoClient coreMongoClient_Acceptance = properties.get(&quot;coreMongoClient_Acceptance&quot;); 
+MongoClient coreMongoClient_UAT = properties.get(&quot;coreMongoClient_UAT&quot;); 
+MongoClient coreMongoClient_PROD = properties.get(&quot;coreMongoClient_PROD&quot;); 
+
+
+coreMongoClient_Acceptance.close();
+coreMongoClient_UAT.close();
+coreMongoClient_PROD.close();
+try
+{
+	coreMongoClient_Acceptance.getDatabaseNames();
+	coreMongoClient_UAT.getDatabaseNames();
+	coreMongoClient_PROD.getDatabaseNames();
+}
+catch (Exception e)
+{
+	log.info &quot;Connection already closed&quot;;
+}
+
+
+
+
+</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>

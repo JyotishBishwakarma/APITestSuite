@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-clean verify Accp</actionName>
+            <displayName>clean verify Accp</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+                <goal>-Denvironment=A</goal>
+                <goal>-DServer=passporttcplistenera</goal>
+                <goal>-DPort=9666</goal>
+            </goals>
+        </action>
+    </actions>

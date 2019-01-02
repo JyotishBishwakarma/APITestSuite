@@ -1,0 +1,140 @@
+contentType,clientId,metadata,fieldSearch,genericSearch,partialSearch,dateField,sort,Values,ExpectedVal,Values2
+FRM,VERISK_001,title,Yes,Yes,yes,,yes,VERMONT CHANGES - LIMITED HOME DAY CARE COVERAGE,FL04721192,VERMONT CHANGES - LIMITED HO*
+FRM,VERISK_001,stateType,Yes,No,,,no,ZZ,CA00010187,Z*
+FRM,VERISK_001,jurisdiction,Yes,No,,,no,VT,FL04721192,V*
+FRM,VERISK_001,language,Yes,Yes,,,no,E,CG29160304,E
+FRM,VERISK_001,displayFormNumber,Yes,Yes,,,yes,CG 29 16 03 04,CG29160304,CG 29 16 0*
+FRM,VERISK_001,mandatory,Yes,No,,,no,Y,CG29160304,Y
+FRM,VERISK_001,circularDate,Yes,No,,,yes,2003-10-27T00:00:00Z,CG29160304,2003-10*
+FRM,VERISK_001,formLobType,Yes,No,,,no,GL,CG29160304,G*
+FRM,VERISK_001,formNumber,no,Yes,,,yes,CG29160304,CG29160304,CG291603*
+FRM,VERISK_001,filingId,Yes,no,,,yes,CL-2003-OEND1,CG29160304,CL-2003-OE*
+FRM,VERISK_001,contentType,Yes,No,,,no,FRM,CG29160304,FRM
+FRM,VERISK_001,circularNumber,Yes,No,,,no,LI-CL-2003-063,CG29160304,LI-CL-2*
+FRM,VERISK_001,formsType,Yes,Yes,,,no,E,CG29160304,E
+FRM,VERISK_001,documentName,Yes,No,,,no,CG29163N,CG29160304,CG29*
+FRM,VERISK_001,tags,Yes,Yes,,,no,Rhode Island,CG29160304,Rhode Isl*
+FRM,VERISK_001,earliestEffectiveDate_dt,Yes,No,,no,no,2004-03-01T00:00:00Z,CG29160304,2004-03-0*
+FRM,VERISK_001,withDrawnDate,Yes,No,,yes,no,2999-01-01T00:00:00Z,BP01130417,2006*
+FRM,VERISK_001,formStatus,Yes,No,,,no,H,CG29160304,H
+FRM,VERISK_001,lob,Yes,No,,,yes,GL,CG29160304,G*
+FRM,VERISK_001,effectiveDate,Yes,no,,yes,no,2017-04-01T00:00:00Z,BP01130417,2004-03*
+FRM,VERISK_001,derivedFrom,Yes,no,,,no,CG29160394,CG29160304,CG291*
+LMN,VERISK_001,lmonDB,yes,yes,,,,CL,LMNCL1941,CL
+LMN,VERISK_001,comments,yes,yes,,,,Approved to become effective on,LMNCL1941,Approved to become effe*
+LMN,VERISK_001,jurisdiction,yes,yes,,,,DE,LMNCL1941,DE
+LMN,VERISK_001,circularReference,yes,yes,,,,LI-CL-2008-128,LMNCL1941,LI-CL-2008-128
+LMN,VERISK_001,itemDescription,yes,yes,,,,"An amendment filing was submitted and approved to amend the forms and related rules filing to apply only for the Farm and Agricultural Capital Assets (Output Policy) lines of business.<BR><BR>2007 De. Laws Ch. 223 (Former H.B. 247); states, in part, that certain property insurance contracts may not require that an action for a claim under the contract be filed less than one (1) year from the date of the denial of the claim by the insurer. However, property insurance contracts may permit an action for a claim made under the contract to be filed more than one (1) year from date of denial of the claim by the insurer. The law also includes a notice to policyholder",LMNCL1941,An amendment filing was submitte*
+LMN,VERISK_001,csvFileCreateDate,yes,no,,,,2009-02-12T10:39:43Z,LMNCL1941,2009-01-01T00:00:00Z
+LMN,VERISK_001,contentType,yes,no,,,,LMN,LMNCL1941,LMN
+LMN,VERISK_001,effectiveDate,yes,,,yes,yes,2009-01-01T00:00:00Z,LMNCL1941,2009-01-01T00:00:00Z
+LMN,VERISK_001,lob,yes,,,,,COMB,LMNCL1941,COM*
+LMN,VERISK_001,status,yes,,,,,Done,LMNCL1941,Don*
+LMN,VERISK_001,lType,yes,yes,,,,Rule,LMNCL1941,Rule
+LMN,VERISK_001,proceduralRequirement,yes,,,,,Claims,LMNCL1941,Clai*
+LMN,VERISK_001,supportForm,yes,,,,,Phn,LMNCL1941,Ph*
+CLM,VERISK_001,serviceCode,yes,Yes,,,,LC,CWRLC_0.7_PE-SD-2013-LC-001,LC
+CLM,VERISK_001,jurisdiction,yes,no,,,,SD,CWRLC_0.7_PE-SD-2013-LC-001,SD
+CLM,VERISK_001,specificCompanyCode,yes,no,,,,ISO,CWRLC_0.7_PE-SD-2013-LC-001,ISO
+CLM,VERISK_001,lobCode,yes,no,,,,PE,CWRLC_0.7_PE-SD-2013-LC-001,PE
+CLM,VERISK_001,contentType,yes,no,,,,CLM,CWRLC_0.7_PE-SD-2013-LC-001,CLM
+CLM,VERISK_001,topicDescription,yes,Yes,yes,,,OPTIONAL INCREASED LIMITS OF MANDATORY COVERAGES,CWRLC_0.7_PE-SD-2013-LC-001,OPTIONAL INCREASED LIMITS OF MANDAT*
+CLM,VERISK_001,expirationDate,yes,no,,,,2999-01-01T00:00:00Z,CWRLC_0.7_PE-SD-2013-LC-001,2999-01-01T00:00:00Z
+CLM,VERISK_001,productId,yes,no,,,,SIM,CWRLC_0.7_PE-SD-2013-LC-001,SI*
+CLM,VERISK_001,ntm,yes,no,,,,PE-SD-2013-LC-001,CWRLC_0.7_PE-SD-2013-LC-001,PE-SD-2013-LC*
+CLM,VERISK_001,documentName,no,no,,,,CWRLC_0.7_PE-SD-2013-LC-001,CWRLC_0.7_PE-SD-2013-LC-001,CWRLC_0.7_PE-SD-2013-LC-001
+CLM,VERISK_001,earliestEffectiveDate_dt,yes,no,,,,2013-10-01T00:00:00Z,CWRLC_0.7_PE-SD-2013-LC-001,2013-10-01T00:00:00Z
+CLM,VERISK_001,publisher,yes,no,,,,ISO,CWRLC_0.7_PE-SD-2013-LC-001,IS*
+CLM,VERISK_001,stateCode,yes,no,,,,SD,CWRLC_0.7_PE-SD-2013-LC-001,S*
+CLM,VERISK_001,lob,yes,no,,,,PE,CWRLC_0.7_PE-SD-2013-LC-001,P*
+CLM,VERISK_001,effectiveDate,yes,no,,yes,,2013-10-01T00:00:00Z,CWRLC_0.7_PE-SD-2013-LC-001,2013-10-01T00:00:00Z
+CLM,VERISK_001,filingId,yes,no,,,,MS-2012-RPELC,CWRLC_0.7_PE-SD-2013-LC-001,MS-2012-RP*
+RUL,VERISK_001,jurisdiction,yes,yes,,,,IA,RULPV-IA-2016-RU-001-C.zip,I*
+RUL,VERISK_001,contentType,yes,no,,,,RUL,RULPV-IA-2016-RU-001-C.zip,RUL
+RUL,VERISK_001,serviceTypeCode,yes,yes,,,,RU,RULPV-IA-2016-RU-001-C.zip,RU
+RUL,VERISK_001,ntm,yes,yes,,,,PV-IA-2016-RU-001,RULPV-IA-2016-RU-001-C.zip,PV-IA-2016-R*
+RUL,VERISK_001,documentName,yes,no,,,,PV-IA-2016-RU-001-C.zip,RULPV-IA-2016-RU-001-C.zip,PV-IA-2016-RU-00*
+RUL,VERISK_001,year,yes,yes,,,,2016,RULPV-IA-2016-RU-001-C.zip,2016
+RUL,VERISK_001,manualProductType,yes,yes,,,,C,RULPV-IA-2016-RU-001-C.zip,C
+RUL,VERISK_001,lob,yes,yes,,,,PA,RULPV-IA-2016-RU-001-C.zip,PA
+RUL,VERISK_001,effectiveDate,yes,no,,yes,yes,2015-12-28T21:03:26Z,RULPV-IA-2016-RU-001-C.zip,2015-12-28T21:03:26
+RUL,VERISK_001,status,yes,no,,,,P,RULPV-IA-2016-RU-001-C.zip,P
+LSC,VERISK_001,jurisdiction,yes,yes,,,,MT,LSCGL-MT-2013-LC-001-C.ZIP,M*
+LSC,VERISK_001,contentType,yes,no,,,,LSC,LSCGL-MT-2013-LC-001-C.ZIP,LSC
+LSC,VERISK_001,serviceTypeCode,yes,yes,,,,LC,LSCGL-MT-2013-LC-001-C.ZIP,LC
+LSC,VERISK_001,ntm,yes,yes,,,,GL-MT-2013-LC-001,LSCGL-MT-2013-LC-001-C.ZIP,GL-MT-2013-L*
+LSC,VERISK_001,documentName,yes,no,,,,GL-MT-2013-LC-001-C.ZIP,LSCGL-MT-2013-LC-001-C.ZIP,GL-MT-2013-LC-0*
+LSC,VERISK_001,year,yes,yes,,,,2013,LSCGL-MT-2013-LC-001-C.ZIP,2013
+LSC,VERISK_001,manualProductType,yes,yes,,,,C,LSCGL-MT-2013-LC-001-C.ZIP,C
+LSC,VERISK_001,lob,yes,yes,,,,GL,LSCGL-MT-2013-LC-001-C.ZIP,GL
+LSC,VERISK_001,effectiveDate,yes,no,,yes,yes,2012-09-20T21:43:13Z,LSCGL-MT-2013-LC-001-C.ZIP,2012-09-20T21:43:13Z
+LSC,VERISK_001,status,yes,no,,,,P,LSCGL-MT-2013-LC-001-C.ZIP,P
+PRM,VERISK_001,jurisdiction,yes,yes,,,,TN,PRMEC-TN-2015-FO-001-C.ZIP,T*
+PRM,VERISK_001,contentType,yes,no,,,,PRM,PRMEC-TN-2015-FO-001-C.ZIP,PRM
+PRM,VERISK_001,serviceTypeCode,yes,yes,,,,FO,PRMEC-TN-2015-FO-001-C.ZIP,FO
+PRM,VERISK_001,ntm,yes,yes,,,,EC-TN-2015-FO-001,PRMEC-TN-2015-FO-001-C.ZIP,EC-TN-2015-FO-0*
+PRM,VERISK_001,documentName,yes,no,,,,EC-TN-2015-FO-001-C.ZIP,PRMEC-TN-2015-FO-001-C.ZIP,EC-TN-2015-FO-00*
+PRM,VERISK_001,year,yes,yes,,,,2015,PRMEC-TN-2015-FO-001-C.ZIP,2015
+PRM,VERISK_001,manualProductType,yes,yes,,,,C,PRMEC-TN-2015-FO-001-C.ZIP,C
+PRM,VERISK_001,manualVersion,no,yes,,,,1,PRMEC-TN-2015-FO-001-C.ZIP,1
+PRM,VERISK_001,lob,yes,no,,,,CY,PRMEC-TN-2015-FO-001-C.ZIP,C*
+PRM,VERISK_001,effectiveDate,yes,no,,yes,yes,2015-03-12T21:06:58Z,PRMEC-TN-2015-FO-001-C.ZIP,2015-03-12T21:06:58
+PRM,VERISK_001,status,yes,no,,,,P,PRMEC-TN-2015-FO-001-C.ZIP,P
+MLC,VERISK_001,contentType,yes,no,,,,MLC,403,MLC
+MLC,VERISK_001,notes,yes,no,,,,Products coverage under this classification includes professional coverage,403,Products coverage under this classification includes profess*
+MLC,VERISK_001,jurisdiction,yes,no,,,,AR,403,AR
+MLC,VERISK_001,expirationDate,yes,,,,,2999-01-01T00:00:00Z,403,2999-01-01T00:00:00Z
+MLC,VERISK_001,sicDescription,yes,no,no,,yes,Drug Stores and Proprietary Stores,403,Drug Stores and Prop*
+MLC,VERISK_001,classTableId,no,no,,,yes,403,403,403
+MLC,VERISK_001,ntm,yes,no,,,,GL-AR-2001-RU-002,403,GL-AR-2001-RU-002
+MLC,VERISK_001,classDescription,yes,yes,yes,,,Drugstores,403,Drugsto*
+MLC,VERISK_001,classID,yes,no,,,,12375,403,12375
+MLC,VERISK_001,sicCode,yes,no,,,,5912,403,5912
+MLC,VERISK_001,naicsDescription,yes,no,,,,Pharmacies and Drug Stores,403,Pharmaci*
+MLC,VERISK_001,naics,yes,no,,,,44611,403,44*
+MLC,VERISK_001,lob,yes,no,,,,GL,403,G*
+MLC,VERISK_001,effectiveDate,yes,no,,yes,,2002-07-01T00:00:00Z,403,2002-07-01T00:00:00Z
+FLV,VERISK_001,filingId,yes,Yes,,,,PP-2006-REL1,FLVPP-2006-REL1,PP-2006-RE*
+FLV,VERISK_001,lob,yes,no,,,,PA,FLVPP-2006-REL1,PA
+FLV,VERISK_001,jurisdiction,yes,no,,,,AK,FLVPP-2006-REL1,AK
+FLV,VERISK_001,regulatoryStatus,yes,no,,,,APRV,FLVPP-2006-REL1,APRV
+FLV,VERISK_001,product,yes,no,,,,SIM,FLVPP-2006-REL1,SIM
+FLV,VERISK_001,projectDescription,yes,no,,,,PV-AK-2007-RU-002,FLVPP-2006-REL1,PV-AK-2007-R*
+FLV,VERISK_001,userName,yes,no,,,,I61828,FLVGL-2015-ZIPU,I61828
+FLV,VERISK_001,revisionType,yes,no,,,,N,FLVPP-2006-REL1,N
+FLV,VERISK_001,filingDate,yes,no,,,,2011-10-01T00:00:00Z,FLVHO-2010-OFR10,2011-10-01T00:00:00Z
+FLV,VERISK_001,filingOwnerId,yes,no,,,,I64612,FLVHO-2010-OFR10,I82527
+FLV,VERISK_001,filingOwnerName,yes,no,,,,"Hamilton, Michael C.",FLVHO-2010-OFR10,"Baidya, S*"
+FLV,VERISK_001,effectiveDate,yes,no,,yes,yes,2014-09-15T00:00:00Z,FLVPP-2006-REL1,2014-09-15T00:00:00Z
+FLV,VERISK_001,projectDescription,yes,no,,,,DL-MN-2002-RU-001,FLVDL-2001-ORU1,DL-MN-2002-RU-001
+FLV,VERISK_001,filingCaption,yes,Yes,,,,HO DRONES AND HOMESHARING,FLVHO-2016-ODHFR,HO DRONES AND HOM*
+FLV,VERISK_001,circularDate,yes,no,,,,2017-02-01T00:00:00Z,FLVHO-2016-ODHFR,2017-02-01T00:00:00Z
+FLV,VERISK_001,serviceType,yes,yes,,,,RU,FLVPP-2006-REL1,RU
+FLV,VERISK_001,noticeId_strs,yes,no,,,,PV-AK-2007-RU-002,FLVPP-2006-REL1,PV-AK-20*
+EMI,VERISK_001,contentType,yes,no,,,,EMI,EMIPOST21,EMI
+EMI,VERISK_001,eiType,yes,no,,,,POST,EMIPOST21,POS*
+EMI,VERISK_001,tag,yes,yes,,,,"Hydraulic Fracturing,Hydraulic Fracturing-Government Activity",EMIPOST21,brown ba*
+EMI,VERISK_001,URL,no,no,,,,https://iso-a.iso.com/ei/homepage/post/248,EMIPOST248,https://iso-a.iso.com/ei/homepage/post/248
+EMI,VERISK_001,mediaName,yes,yes,,,,227,EMIMEDIA227,227
+EMI,VERISK_001,realTitle,yes,yes,,,,Topic_P_pexels-photo-228891_wi,EMIMEDIA236,Topic_P_pexels-photo-2288*
+EMI,VERISK_001,htmlContent,yes,yes,,,,Topic_P_pexels-photo-228891_wi No description,EMIMEDIA236,Topic_P_pexels-photo-228891_wi No descripti*
+EMI,VERISK_001,postName,yes,yes,,,,42,EMIPOST42,1002*
+FRM,VERISK_001,documentAvailable_date,no,no,,yes,no,2016-11-14T00:00:00Z,BP01130417,CG291*
+CRC,VERISK_001,fileName,yes,no,,,,gc809964,LI-CF-1998-291,LAG080*
+CRC,VERISK_001,year,yes,Yes,,,yes,1998,LI-CF-1998-291,200*
+CRC,VERISK_001,jurisdiction,yes,no,,,,VA,LI-CF-1998-291,N*
+CRC,VERISK_001,circularDate,yes,no,,yes,,1998-09-09T00:00:00Z,LI-CF-1998-291,2008-02-28T00:00:00Z
+CRC,VERISK_001,objectType,yes,no,,,,15,LI-CF-1998-291,1*
+CRC,VERISK_001,primaryYear,yes,yes,,,,1998,LI-CF-1998-291,2008
+CRC,VERISK_001,primarySequenceNumber,yes,Yes,,,,291,LI-CF-1998-291,30
+CRC,VERISK_001,headline,yes,Yes,yes,,yes,VIRGINIA GLASS ADVISORY PROSPECTIVE LOSS COST REVISION FILED FOR APPROVAL,LI-CF-1998-291,VIRGINIA GLASS ADVISORY PROSPECTIVE LOSS COST REVISION FILED FOR APPRO*
+CRC,VERISK_001,contentType,yes,no,,,,CRC,LI-CF-1998-291,CRC
+CRC,VERISK_001,productType,yes,yes,,,,LI,LI-CF-1998-291,LI
+CRC,VERISK_001,primaryLob,yes,Yes,,,,CF,LI-CF-1998-291,AG
+CRC,VERISK_001,sequenceNumber,yes,Yes,,,,291,LI-CF-1998-291,32
+CRC,VERISK_001,displayFormat,no,Yes,,,yes,LI-CF-1998-291,LI-CF-1998-291,LI-CF-1998-29*
+CRC,VERISK_001,newFileName,yes,no,,,,lcf98291,LI-CF-1998-291,LAG080*
+CRC,VERISK_001,primaryProductType,yes,Yes,,,,LI,LI-CF-1998-291,LI
+CRC,VERISK_001,lob,yes,Yes,,,,CF,LI-CF-1998-291,CRC
+CRC,VERISK_001,serviceType,yes,Yes,,,,LC,LI-CF-1998-291,F*
+CRC,VERISK_001,effectiveDate,no,no,,yes,yes,1998-09-09T00:00:00Z,LI-CF-1998-291,F*

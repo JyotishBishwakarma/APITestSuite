@@ -1,0 +1,11 @@
+contentType,groupFields,clientId,primaryFileType,secondaryFileType,
+FRM,uniqueId,VERISK_001,doc,pdf,
+CRC,uniqueId,VERISK_001,pdf,cl,zip
+CLM,uniqueId,VERISK_001,htm,,
+MLC,uniqueId,VERISK_001,,,
+LMN,uniqueId,VERISK_001,,,
+FLV,uniqueId,VERISK_001,,,
+EMI,uniqueId,VERISK_001,,,
+PRM,uniqueId,VERISK_001,,,
+RUL,uniqueId,VERISK_001,,,
+LSC,uniqueId,VERISK_001,,,

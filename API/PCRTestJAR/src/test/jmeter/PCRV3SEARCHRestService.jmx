@@ -1,0 +1,2359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1365025454000</longProp>
+        <longProp name="ThreadGroup.end_time">1365025454000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="uatserver" elementType="Argument">
+              <stringProp name="Argument.name">uatserver</stringProp>
+              <stringProp name="Argument.value">pcr-uat.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="csv" elementType="Argument">
+              <stringProp name="Argument.name">csv</stringProp>
+              <stringProp name="Argument.value">${__property(csvSource,,C://Users//i20918//Desktop//PCR//pcr_automation//pcr_test//develop//pcr.test//API//PCRTestJAR//src//test//resources)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+              <stringProp name="Argument.desc">C://apache-jmeter-3.2//bin//PCR regression//PCR regression//Test_data</stringProp>
+            </elementProp>
+            <elementProp name="Environment" elementType="Argument">
+              <stringProp name="Argument.name">Environment</stringProp>
+              <stringProp name="Argument.value">${__property(server,,uat)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="stgserver" elementType="Argument">
+              <stringProp name="Argument.name">stgserver</stringProp>
+              <stringProp name="Argument.value">staging-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="prodserver" elementType="Argument">
+              <stringProp name="Argument.name">prodserver</stringProp>
+              <stringProp name="Argument.value">pcr-content.iso.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Testdatadocumentpath" elementType="Argument">
+              <stringProp name="Argument.name">Testdatadocumentpath</stringProp>
+              <stringProp name="Argument.value">${__property(csvSource,,H:\\Desktop\\Dktop2017\\PCRTestJAR -Regression\\src\\test\\resources)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">		if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;prod&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;prodserver&quot;));
+			
+		}
+		else if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;Staging&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;stgserver&quot;));
+			
+		}
+		else if(vars.get(&quot;Environment&quot;).equalsIgnoreCase(&quot;uat&quot;))
+		{
+			vars.put(&quot;server&quot;,vars.get(&quot;uatserver&quot;));
+			vars.put(&quot;Mongodbserver&quot;,&quot;10.93.204.78&quot;);
+			vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			//vars.put(&quot;Mongodbserver&quot;,&quot;0931-PCRMGD-U01.veriska.local&quot;);
+			//vars.put(&quot;Mongodbserverport&quot;,&quot;27017&quot;);
+			
+			
+		}</stringProp>
+          <stringProp name="BeanShellSampler.filename"></stringProp>
+          <stringProp name="BeanShellSampler.parameters"></stringProp>
+          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">FieldNames</stringProp>
+        </WhileController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${csv}/PCRV3SEARCH.csv</stringProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">true</boolProp>
+            <stringProp name="variableNames">clientId,Contenttype,FieldNames,method,uniquekey,uniquekey1,FieldNamesvalue,uniquekeyvalue,filename,update,metadata,filetobeuploaded,metadatafield,downloadfileformat </stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+          </CSVDataSet>
+          <hashTree/>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;search&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;search&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Search  metadata fields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata-${Contenttype}- ${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="false">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber_1&quot;);
+
+String csvformNumber=&quot;${FormNumber}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${uniquekey}:${JSONformNumber_1} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;responseformNumber:&quot;+responseformNumber+&quot;csvformNumber:&quot;+csvformNumber;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;sort&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;sort&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Sort metadatfields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Sort with metadata- ${Contenttype}-${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;sortField&quot;:&quot;${FieldNames}&quot;,&#xd;
+&quot;sortOrder&quot;:&quot;desc&quot;,&quot;responseFields&quot;:&quot;${uniquekey},displayFormNumber&quot;}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">responsefield</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="false">
+                  <stringProp name="BeanShellAssertion.query">	//for(int i=2;i&lt;=10;i++) { 
+		
+	//int i=1
+	//String responseformNumber=vars.get(&quot;responsefield_&quot; + String.valueOf(i));
+	//String responseformNumber1=vars.get(&quot;responsefield_&quot; + String.valueOf(i+1));//
+	List responseformNumber=vars.get(&quot;responsefield&quot;)
+	String responseformNumber=vars.get(&quot;responsefield_1&quot;);
+	String responseformNumber1=vars.get(&quot;responsefield_2&quot;);
+
+	if (responseformNumber.gteq(responseformNumber1)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertioeqn is PASS&quot;);
+	
+	}
+	
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String. the response value 1:&quot;+responseformNumber1+&quot;the response value 2:&quot;+responseformNumber;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+	//}
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+String response = prev.getResponseDataAsString(); 
+JSONParser parser = new JSONParser();
+JSONArray GroupList = (JSONArray) parser.parse(response);
+for (int i = 0; i &lt; GroupList.size(); i++) {
+    JSONObject objGroup = (JSONObject) GroupList.get(i);
+    vars.put(&quot;Group_&quot; + i, objGroup.get(&quot;id&quot;));
+    print(&quot;Group_&quot; + i);
+}</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Sort with metadata- ${Contenttype}-${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;sortField&quot;:&quot;${FieldNames}&quot;,&#xd;
+&quot;sortOrder&quot;:&quot;asc&quot;,&quot;responseFields&quot;:&quot;${uniquekey},displayFormNumber,${FieldNames}&quot;}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">responsefield</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">int fieldCount = Integer.parseInt(vars.get(&quot;responsefield_matchNr&quot;));
+
+log.info(&quot;Sort  fields  vaidation starts: &quot;);
+
+List responseFieldList = new ArrayList();
+int i=1;
+for(int i=1;i&lt;=fieldCount;i++){
+ responseFieldList.add(vars.get(&quot;responsefield_&quot;+i));
+}
+String beforeSort = responseFieldList.toString();
+Collections.sort(responseFieldList);
+String afterSort = responseFieldList.toString();
+log.info(&quot;before Sort :: &quot;+ beforeSort);
+log.info(&quot;after Sort :: &quot;+ afterSort);
+if(beforeSort.equals(afterSort)){
+ 	Failure=false;
+ 	log.info(&quot;Before and After Sort is equal&quot;);
+}else {
+	Failure=true;
+	log.info(&quot;Before and After Sort is not  equal&quot;);
+	FailureMessage=&quot;Sort not working&quot;;
+}
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script"></stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Sort with metadata- ${Contenttype}-${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;sortField&quot;:&quot;${FieldNames}&quot;,&#xd;
+&quot;sortOrder&quot;:&quot;desc&quot;,&quot;responseFields&quot;:&quot;${uniquekey},displayFormNumber,&quot;}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">responsefield</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">int fieldCount = Integer.parseInt(vars.get(&quot;responsefield_matchNr&quot;));
+
+log.info(&quot;Sort  fields  vaidation starts: &quot;);
+
+List responseFieldList = new ArrayList();
+int i=1;
+for(int i=1;i&lt;=fieldCount;i++){
+ responseFieldList.add(vars.get(&quot;responsefield_&quot;+i));
+}
+String beforeSort = responseFieldList.toString();
+Collections.sort(responseFieldList, Collections.reverseOrder());
+String afterSort = responseFieldList.toString();
+log.info(&quot;before Sort :: &quot;+ beforeSort);
+log.info(&quot;after Sort :: &quot;+ afterSort);
+if(beforeSort.equals(afterSort)){
+	 // Success
+ 	Failure=false;
+ 	log.info(&quot;Before and After Sort is equal&quot;);
+}else {
+	Failure=true;
+	log.info(&quot;Before and After Sort is not equal&quot;);
+}
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script"></stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;facet&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;facet&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Facet Search  metadata fields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="facet earch with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;1&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;facet&quot;:&quot;true&quot;,&#xd;
+&quot;responseFields&quot;:&quot;facet_fields&quot;,&#xd;
+&quot;facetFields&quot;:&quot;${FieldNames}&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="Numfound" enabled="true">
+                  <stringProp name="VAR">TotalNumfound</stringProp>
+                  <stringProp name="JSONPATH">numFound</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">Facetfields</stringProp>
+                  <stringProp name="JSONPATH">$.facet_counts[*].${FieldNames}[*]</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">String TotalResults = vars.get(&quot;Facetfields_matchNr&quot;);
+
+int TotalNumfound=${TotalNumfound};
+int i=1;
+int totalfromresponse=0;
+log.info(&quot;TotalNumfound: &quot;+TotalNumfound);
+for(int i=1;i&lt;=Integer.parseInt(TotalResults);i++){
+ log.info(&quot;Getting Facetfileds for index:&quot;+i);
+ log.info(vars.get(&quot;Facetfields_&quot;+i));
+ totalfromresponse += Integer.parseInt(vars.get(&quot;Facetfields_&quot;+i));
+}
+vars.put(&quot;facet_total&quot;,totalfromresponse)
+
+if (totalfromresponse ==TotalNumfound){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of all facetfields&quot;);
+	log.info(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound;
+	log.error(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String TotalResults = vars.get(&quot;Facetfields_matchNr&quot;);
+
+int TotalNumfound=${TotalNumfound};
+int i=1;
+int totalfromresponse=0;
+log.info(&quot;TotalNumfound: &quot;+TotalNumfound);
+for(int i=1;i&lt;=Integer.parseInt(TotalResults);i++){
+ log.info(&quot;Getting Facetfileds for index:&quot;+i);
+ log.info(vars.get(&quot;Facetfields_&quot;+i));
+ totalfromresponse += Integer.parseInt(vars.get(&quot;Facetfields_&quot;+i));
+}
+//vars.put(&quot;facet_total&quot;,totalfromresponse)
+
+if (totalfromresponse ==TotalNumfound){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of all facetfields&quot;);
+	log.info(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound;
+	log.error(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;group&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;group&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="group metadatfields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="group with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;group&quot;:&quot;true&quot;,&#xd;
+&quot;groupFields&quot;:&quot;${FieldNames}&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${FieldNames}&quot;}&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">groupValuelist</stringProp>
+                  <stringProp name="JSONPATH">grouped[*].groups[*].groupValue</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">numFoundlist</stringProp>
+                  <stringProp name="JSONPATH">grouped[*].groups[*].doclist.numFound</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="false">
+                  <stringProp name="BeanShellAssertion.query">	//for(int i=2;i&lt;=10;i++) { 
+		
+	//int i=1
+	//String responseformNumber=vars.get(&quot;responsefield_&quot; + String.valueOf(i));
+	//String responseformNumber1=vars.get(&quot;responsefield_&quot; + String.valueOf(i+1));//
+	List responseformNumber=vars.get(&quot;responsefield&quot;)
+	String responseformNumber=vars.get(&quot;responsefield_1&quot;);
+	String responseformNumber1=vars.get(&quot;responsefield_2&quot;);
+
+	if (responseformNumber.gteq(responseformNumber1)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertioeqn is PASS&quot;);
+	
+	}
+	
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String. the response value 1:&quot;+responseformNumber1+&quot;the response value 2:&quot;+responseformNumber;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+	//}
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">String numFoundlistsize = vars.get(&quot;numFoundlist_matchNr&quot;);
+
+for(int i=1;i&lt;=Integer.parseInt(numFoundlistsize);i++){
+ log.info(&quot;Getting numFoundlist for index: &quot;+i);
+ log.info(vars.get(&quot;numFoundlist_&quot;+i));
+ if (Integer.parseInt(vars.get(&quot;numFoundlist_&quot;+i)) &gt; 1) {
+ 	log.info(&quot;Success for finding field value greateer than 1&quot;);
+ 	log.info(vars.get(&quot;numFoundlist_&quot;+i));
+ 	log.info(vars.get(&quot;groupValuelist_&quot;+i));
+ 	String responsefieldnumber =vars.get(&quot;groupValuelist_&quot;+i);
+ 	vars.put(&quot;responsefieldnumber&quot;,responsefieldnumber);
+ 	break;
+ 	}
+}
+
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+                <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </Arguments>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="group with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;1&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${FieldNames}:${responsefieldnumber})&quot;,&#xd;
+&quot;group&quot;:&quot;true&quot;,&#xd;
+&quot;groupFields&quot;:&quot;${FieldNames}&quot;,&#xd;
+&quot;groupLimit&quot;:&quot;54&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${FieldNames}&quot;,&#xd;
+&quot;facet&quot;:&quot;true&quot;,&quot;facetFields&quot;:&quot;${FieldNames}&quot;&#xd;
+}&#xd;
+&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">facetgrouplist</stringProp>
+                  <stringProp name="JSONPATH">grouped[*].groups[*].doclist.docs[*].${FieldNames} </stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String facetgrouplistsize=vars.get(&quot;facetgrouplist_matchNr&quot;);
+
+String responsefieldcompare = vars.get(&quot;responsefieldnumber&quot;);
+log.info(&quot;responsefieldcompare :&quot;+responsefieldcompare);
+for(int i=1;i&lt;=Integer.parseInt(facetgrouplistsize);i++){
+ 	String responseformNumber=vars.get(&quot;facetgrouplist_&quot;+i);
+	
+
+	if (responseformNumber.equals(responsefieldcompare)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else  {
+	Failure=true;
+	log.info(&quot;Bean Shell Assertion is PASS.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+	
+}
+
+	//}
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="false">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script"></stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;specialcharsearch&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;specialcharsearch&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="specialcharsearch  metadata fields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with specialcharsearch- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND (${FieldNames}:$sample) AND ${uniquekey}:${uniquekeyvalue})&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${uniquekey}&quot;,&#xd;
+&quot;$sample&quot;:&quot;${FieldNamesvalue},&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">//String JsonformNumberlistsize=vars.get(&quot;JSONformNumber_matchNr&quot;);
+int fieldCount = Integer.parseInt(vars.get(&quot;JSONformNumber_matchNr&quot;));
+
+String responsefieldcompare = vars.get(&quot;uniquekeyvalue&quot;);
+//String responsefieldcompare = ${uniquekeyvalue};
+
+log.info(&quot;responsefieldcompare :&quot;+responsefieldcompare);
+for(int i=1;i&lt;=fieldCount;i++){
+ 	String responseformNumber=vars.get(&quot;JSONformNumber_&quot;+i);
+	
+
+	if (responseformNumber.equals(responsefieldcompare)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else  {
+	Failure=true;
+	log.info(&quot;Bean Shell Assertion is PASS.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata- ${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;charsearch&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;charsearch&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="charsearch  metadata fields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with charsearch- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND (${FieldNames}:\&quot;${FieldNamesvalue}\&quot;) AND ${uniquekey}:${uniquekeyvalue})&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${uniquekey}&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">//String JsonformNumberlistsize=vars.get(&quot;JSONformNumber_matchNr&quot;);
+int fieldCount = Integer.parseInt(vars.get(&quot;JSONformNumber_matchNr&quot;));
+
+String responsefieldcompare = vars.get(&quot;uniquekeyvalue&quot;);
+//String responsefieldcompare = ${uniquekeyvalue};
+
+log.info(&quot;responsefieldcompare :&quot;+responsefieldcompare);
+for(int i=1;i&lt;=fieldCount;i++){
+ 	String responseformNumber=vars.get(&quot;JSONformNumber_&quot;+i);
+	
+
+	if (responseformNumber.equals(responsefieldcompare)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else  {
+	Failure=true;
+	log.info(&quot;Bean Shell Assertion is PASS.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata- ${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;searchscope&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;searchscope&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="searchscope" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchscope-${Contenttype}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;1&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;responseFields&quot;:&quot;numFound&quot;,&#xd;
+&quot;searchScope&quot;:&quot;ISO&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="Numfound-ISO" enabled="true">
+                  <stringProp name="VAR">TotalNumfound_ISO</stringProp>
+                  <stringProp name="JSONPATH">numFound</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">String TotalResults = vars.get(&quot;Facetfields_matchNr&quot;);
+
+int TotalNumfound=${TotalNumfound};
+int i=1;
+int totalfromresponse=0;
+log.info(&quot;TotalNumfound: &quot;+TotalNumfound);
+for(int i=1;i&lt;=Integer.parseInt(TotalResults);i++){
+ log.info(&quot;Getting Facetfileds All: &quot;);
+ log.info(vars.get(&quot;Facetfields_&quot;+i));
+ totalfromresponse += Integer.parseInt(vars.get(&quot;Facetfields_&quot;+i));
+}
+
+
+if (totalfromresponse ==TotalNumfound){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of all facetfields&quot;);
+	log.info(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound;
+	log.error(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchscope-${Contenttype}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;1&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;responseFields&quot;:&quot;numFound&quot;,&#xd;
+&quot;searchScope&quot;:&quot;CLIENT&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="Numfound-client" enabled="true">
+                  <stringProp name="VAR">TotalNumfound_client</stringProp>
+                  <stringProp name="JSONPATH">numFound</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">String TotalResults = vars.get(&quot;Facetfields_matchNr&quot;);
+
+int TotalNumfound=${TotalNumfound};
+int i=1;
+int totalfromresponse=0;
+log.info(&quot;TotalNumfound: &quot;+TotalNumfound);
+for(int i=1;i&lt;=Integer.parseInt(TotalResults);i++){
+ log.info(&quot;Getting Facetfileds All: &quot;);
+ log.info(vars.get(&quot;Facetfields_&quot;+i));
+ totalfromresponse += Integer.parseInt(vars.get(&quot;Facetfields_&quot;+i));
+}
+
+
+if (totalfromresponse ==TotalNumfound){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of all facetfields&quot;);
+	log.info(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound;
+	log.error(&quot;Total from facet fields: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalNumfound);
+	}
+
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchscope-${Contenttype}" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;1&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;,&#xd;
+&quot;responseFields&quot;:&quot;numFound&quot;,&#xd;
+&quot;searchScope&quot;:&quot;ISOANDCLIENT&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="Numfound-ISOANDCLIENT" enabled="true">
+                  <stringProp name="VAR">TotalNumfound_ISOANDCLIENT</stringProp>
+                  <stringProp name="JSONPATH">numFound</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="false">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">int TotalResults = Integer.parseInt(vars.get(&quot;TotalNumfound_ISOANDCLIENT&quot;));
+int TotalResultsclient = Integer.parseInt(vars.get(&quot;TotalNumfound_client&quot;));
+
+int TotalResultsISO = Integer.parseInt(vars.get(&quot;TotalNumfound_ISO&quot;));
+
+
+int totalfromresponse=TotalResultsISO+TotalResultsclient;
+
+if (totalfromresponse ==TotalResults){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of ISO AND CLIENT COUNT&quot;);
+	log.info(&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults;
+	log.error(&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults);
+	}
+
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">int TotalResults = Integer.parseInt(vars.get(&quot;TotalNumfound_ISOANDCLIENT&quot;));
+int TotalResultsclient = Integer.parseInt(vars.get(&quot;TotalNumfound_client&quot;));
+
+int TotalResultsISO = Integer.parseInt(vars.get(&quot;TotalNumfound_ISO&quot;));
+
+
+int totalfromresponse=TotalResultsISO+TotalResultsclient;
+
+if (totalfromresponse ==TotalResults){
+	Failure=false;
+	log.info(&quot;TotalNumfound is equal to sum of ISO AND CLIENT COUNT&quot;);
+	log.info(&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults);
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults;
+	log.error(&quot;Sum of ISO AND CLIENT: &quot;+totalfromresponse+&quot; Total from Numfound field: &quot;+TotalResults);
+	}
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;uniquekeysearch&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;uniquekeysearch&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="uniquekeysearch" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="uniquekeysearch- ${Contenttype}-${uniquekey} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND(${uniquekey}:\&quot;${uniquekeyvalue}\&quot;))&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${uniquekey}&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">//String JsonformNumberlistsize=vars.get(&quot;JSONformNumber_matchNr&quot;);
+int fieldCount = Integer.parseInt(vars.get(&quot;JSONformNumber_matchNr&quot;));
+
+String responsefieldcompare = vars.get(&quot;uniquekeyvalue&quot;);
+//String responsefieldcompare = ${uniquekeyvalue};
+
+log.info(&quot;responsefieldcompare :&quot;+responsefieldcompare);
+for(int i=1;i&lt;=fieldCount;i++){
+ 	String responseformNumber=vars.get(&quot;JSONformNumber_&quot;+i);
+	
+
+	if (responseformNumber.equals(responsefieldcompare)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else  {
+	Failure=true;
+	log.info(&quot;Bean Shell Assertion is PASS.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata- ${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;partialkeysearch&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;partialkeysearch&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="partialkeysearch" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="partialkeysearch-${Contenttype}- ${uniquekey} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND(_${uniquekey}_:\&quot;${uniquekeyvalue}\&quot;))&quot;,&#xd;
+&quot;responseFields&quot;:&quot;lob,jurisdiction,${uniquekey}&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">//String JsonformNumberlistsize=vars.get(&quot;JSONformNumber_matchNr&quot;);
+int fieldCount = Integer.parseInt(vars.get(&quot;JSONformNumber_matchNr&quot;));
+
+String responsefieldcompare = vars.get(&quot;uniquekeyvalue&quot;);
+int len=responsefieldcompare.length();
+//String responsefieldcompare = ${uniquekeyvalue};
+
+log.info(&quot;responsefieldcompare :&quot;+responsefieldcompare);
+for(int i=1;i&lt;=fieldCount;i++){
+	log.info(&quot;validation starts for index no:&quot;+i);
+ 	String responseformNumberstring=vars.get(&quot;JSONformNumber_&quot;+i);
+ 	String responseformNumber=responseformNumberstring.substring(0,len);
+	
+	
+	if (responseformNumber.equals(responsefieldcompare)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	log.info(&quot;Bean Shell Assertion is PASS.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+	else  {
+	Failure=true;
+	log.info(&quot;Bean Shell Assertion is Fail.the response value 1:&quot;+responseformNumber+&quot;the response value 2:&quot;+responsefieldcompare);
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="search with metadata- ${FieldNames} " enabled="false">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="if &quot;${method}&quot;=&quot;searchdate&quot;" enabled="true">
+            <stringProp name="IfController.condition">&quot;${method}&quot;==&quot;searchdate&quot;</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Searchdate- metadata fields" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">false</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchdate with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="false">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber_1&quot;);
+
+String csvformNumber=&quot;${FormNumber}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;Not a valid String&quot;;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.gui.JSONPathAssertionGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion" testname="jp@gc - JSON Path Assertion" enabled="false">
+                  <stringProp name="JSON_PATH"></stringProp>
+                  <stringProp name="EXPECTED_VALUE">FL04721192
+</stringProp>
+                  <boolProp name="JSONVALIDATION">true</boolProp>
+                  <boolProp name="EXPECT_NULL">false</boolProp>
+                  <boolProp name="INVERT">false</boolProp>
+                  <boolProp name="ISREGEX">false</boolProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathassertion.JSONPathAssertion>
+                <hashTree/>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">FieldNameresponse</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${FieldNames}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+
+String Response = vars.get(&quot;FieldNameresponse_1&quot;);
+log.info(&quot;Response : &quot; + Response);
+//Mon Mar 01 00:00:00 UTC 2004
+//2017-11-29 02:50:39.876 EST
+
+String utc=&quot;UTC&quot;;
+String est=&quot;EST&quot;;
+
+DateFormat formatter = null;
+Date date = null;
+if(Response.contains(utc)){
+	formatter = new SimpleDateFormat(&quot;E MMM dd HH:mm:ss Z yyyy&quot;);
+	date = (Date)formatter.parse(Response);
+	formatter = new SimpleDateFormat(&quot;&apos;\\\&quot;&apos;yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;.0Z\\\&quot;&apos;&quot;);
+	formatter.setTimeZone(TimeZone.getTimeZone(&quot;UTC&quot;));
+}else{
+	formatter = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS Z&quot;);
+	date = (Date)formatter.parse(Response);
+	formatter = new SimpleDateFormat(&quot;&apos;\\\&quot;&apos;yyyy-MM-dd&apos;T&apos;HH:mm:ss&apos;.0Z\\\&quot;&apos;&quot;);
+	formatter.setTimeZone(TimeZone.getTimeZone(&quot;EST&quot;));
+}
+log.info(&quot;formatedDate : &quot; + formatter.format(date));
+vars.put(&quot;FieldNameresponse_1&quot;, formatter.format(date));
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="searchdate with metadata- ${Contenttype}-${FieldNames} " enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{&#xd;
+&quot;clientId&quot;:&quot;${clientId}&quot;,&#xd;
+&quot;requestId&quot;:&quot;3r436y 4yyuh46676uy7&quot;,&#xd;
+&quot;pageSize&quot;:&quot;100&quot;,&#xd;
+&quot;pageNumber&quot;:&quot;1&quot;,&#xd;
+&quot;searchOption&quot;:&quot;facsimile&quot;,&#xd;
+&quot;query&quot;:&quot;(contentType:${Contenttype} AND ${uniquekey}:${JSONformNumber_1} AND ${FieldNames}:${FieldNameresponse_1})&quot;&#xd;
+}&#xd;
+</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain">${server}</stringProp>
+                <stringProp name="HTTPSampler.port">443</stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">pcr-rest-api/V3/Search</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor guiclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.gui.JSONPathExtractorGui" testclass="com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor" testname="jp@gc - JSON Path Extractor" enabled="true">
+                  <stringProp name="VAR">JSONformNumber1</stringProp>
+                  <stringProp name="JSONPATH">$.docs[*].${uniquekey}</stringProp>
+                  <stringProp name="DEFAULT">0</stringProp>
+                  <stringProp name="VARIABLE"></stringProp>
+                  <stringProp name="SUBJECT">BODY</stringProp>
+                </com.atlantbh.jmeter.plugins.jsonutils.jsonpathextractor.JSONPathExtractor>
+                <hashTree/>
+                <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+                  <stringProp name="BeanShellAssertion.query">String responseformNumber=vars.get(&quot;JSONformNumber1_1&quot;);
+
+String csvformNumber=&quot;${JSONformNumber_1}&quot;;
+
+	if (responseformNumber.equals(csvformNumber)){
+	Failure=false;
+	log.info(&quot;Bean Shell Assertion is PASS&quot;);
+	
+	}
+	else{
+	Failure=true;
+	FailureMessage=&quot;responseformNumber:&quot;+responseformNumber+&quot;csvformNumber:&quot;+csvformNumber;
+	log.error(&quot;Bean Shell Assertion is Fail&quot;);
+	}
+
+
+
+
+
+
+
+
+
+
+</stringProp>
+                  <stringProp name="BeanShellAssertion.filename"></stringProp>
+                  <stringProp name="BeanShellAssertion.parameters"></stringProp>
+                  <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+                </BeanShellAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugSampler>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">V4_Search-${__time(yyMMdd)}.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
